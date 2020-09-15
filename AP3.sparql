@@ -1,0 +1,10 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+SELECT ?C ?B ?A
+WHERE
+{
+  ?C wdt:P279 ?A .
+  ?C wdt:P279 ?B .
+  ?B wdt:P31 ?A
+}
