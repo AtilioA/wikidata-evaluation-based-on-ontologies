@@ -1,10 +1,9 @@
-PREFIX wd: <http://www.wikidata.org/entity/>
-PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-SELECT ?C ?B ?A
-WHERE
-{
-  ?C wdt:P279 ?A .
-  ?C wdt:P279 ?B .
-  ?B wdt:P31 ?A
+SELECT DISTINCT ?C ?B ?A
+WHERE {
+  ?B rdf:type ?A .
+  ?C rdf:type ?A .
+  ?C rdf:type ?B .
 }

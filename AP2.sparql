@@ -1,10 +1,9 @@
-PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-PREFIX rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 
-SELECT DISTINCT ?C ?B ?A
-WHERE {
-  ?B rdf:type ?A .
-  ?C rdf:type ?A .
-  ?C rdf:type ?B .
-  filter(?A != owl:Class)
+SELECT ?C ?B ?A
+WHERE
+{
+  ?C wdt:P279 ?A .
+  ?C wdt:P279 ?B .
+  ?B wdt:P31 ?A .
 }
