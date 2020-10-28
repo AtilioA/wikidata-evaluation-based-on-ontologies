@@ -7,5 +7,5 @@ WHERE
   ?A wdt:P31 ?C . # Classes that are instances of other entities
 }
 
-# thus all entities involved in hierarchies spanning more than one level of classification
+# Thus all entities involved in hierarchies spanning more than one level of classification
 # (our target classes for this investigation).

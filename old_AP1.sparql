@@ -5,5 +5,5 @@ SELECT ?subject ?object
 WHERE
 {
   ?subject wdt:P31 ?object .
-  ?subject wdt:P279+ ?object .
+  ?subject wdt:P279 ?object .
 }

@@ -1,8 +1,7 @@
-PREFIX wd: <http://www.wikidata.org/entity/>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 
 SELECT ?subject ?object
 WHERE
 {
-  ?subject wdt:P31 ?object
+  ?subject wdt:P31 ?object .
 }
