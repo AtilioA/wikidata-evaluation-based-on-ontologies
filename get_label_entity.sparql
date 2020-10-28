@@ -1,0 +1,9 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?subjectLabel
+WHERE
+{
+    wd:Q66363914 rdfs:label ?subjectLabel .
+    FILTER (lang(?subjectLabel) = "" || lang(?subjectLabel) = "en") .
+}
