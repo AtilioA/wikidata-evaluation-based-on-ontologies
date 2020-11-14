@@ -1,0 +1,200 @@
+1 - Q7187 (gene): 971982
+2 - Q8054 (protein): 757360
+3 - Q4164871 (position): 103545
+4 - Q277338 (pseudogene): 49404
+5 - Q427087 (non-coding RNA): 49132
+6 - Q2996394 (biological process): 30315
+7 - Q12136 (disease): 12293
+8 - Q14860489 (molecular function): 11204
+9 - Q34770 (language): 6795
+10 - Q5058355 (cellular component): 4287
+11 - Q294414 (public office): 2544
+12 - Q898273 (protein domain): 2493
+13 - Q282 (wine): 2143
+14 - Q929833 (rare disease): 1994
+15 - Q618779 (award): 1469
+16 - Q55788864 (developmental defect during embryogenesis): 1403
+17 - Q201448 (transfer RNA): 1153
+18 - Q11173 (chemical compound): 875
+19 - Q60754876 (grade of an order): 772
+20 - Q55789477 (head and neck disease): 735
+21 - Q11862829 (academic discipline): 563
+22 - Q284416 (small nucleolar RNA): 560
+23 - Q12737077 (occupation): 501
+24 - Q4936952 (anatomical structure): 488
+25 - Q67101749 (transmembrane transport protein family): 446
+26 - Q18123741 (infectious disease): 432
+27 - Q189533 (academic degree): 429
+28 - Q41710 (ethnic group): 393
+29 - Q28640 (profession): 388
+30 - Q56061 (administrative territorial entity): 362
+31 - Q30634609 (heritage designation): 340
+32 - Q26817508 (rose cultivar): 322
+33 - Q9655 (artery): 291
+34 - Q38033430 (class of award): 284
+35 - Q2095 (food): 260
+36 - Q7365 (muscle): 218
+37 - Q12140 (medication): 209
+38 - Q1914636 (activity): 208
+39 - Q2424752 (product): 203
+40 - Q13406554 (sports festival): 202
+41 - Q43229 (organization): 197
+42 - Q2668072 (collection): 195
+43 - Q170285 (traffic sign): 195
+44 - Q210272 (cultural heritage): 193
+45 - Q2057971 (health problem): 190
+46 - Q8142 (currency): 178
+47 - Q12909644 (political ideology): 171
+48 - Q355567 (noble title): 163
+49 - Q11053 (RNA): 157
+50 - Q3320743 (title of honor): 148
+51 - Q15091377 (cycling race): 131
+52 - Q735160 (crude drug): 127
+53 - Q223393 (literary genre): 121
+54 - Q11436 (aircraft): 121
+55 - Q9609 (veins): 113
+56 - Q192093 (Anatomical Therapeutic Chemical Classification System): 108
+57 - Q746549 (dish): 101
+58 - Q1190554 (occurrence): 98
+59 - Q6979593 (national association football team): 97
+60 - Q171318 (kinship): 91
+61 - Q215980 (ribosomal RNA): 91
+62 - Q1079023 (championship): 89
+63 - Q15304597 (sequence variant): 88
+64 - Q25403900 (food ingredient): 86
+65 - Q163727 (bachelor's degree): 83
+66 - Q284578 (small nuclear RNA): 83
+67 - Q1047113 (specialty): 82
+68 - Q161 (fiber): 82
+69 - Q3311537 (hereditary disorder): 82
+70 - Q732577 (publication): 82
+71 - Q40231 (election): 81
+72 - Q5737899 (hereditary title): 76
+73 - Q235557 (file format): 74
+74 - Q169872 (symptom): 70
+75 - Q51031626 (sport competition at a multi-sport event): 70
+76 - Q3270632 (national championship): 70
+77 - Q39546 (tool): 69
+78 - Q176799 (military unit): 69
+79 - Q67015883 (enzyme family): 69
+80 - Q103632 (chess opening): 68
+81 - Q2312410 (sports discipline): 67
+82 - Q11344 (chemical element): 66
+83 - Q12132 (calendar): 65
+84 - Q183816 (master's degree): 65
+85 - Q1075 (color): 64
+86 - Q349 (sport): 62
+87 - Q41176 (building): 62
+88 - Q34379 (musical instrument): 61
+89 - Q1441305 (clinical sign): 56
+90 - Q2155148 (polychoron): 56
+91 - Q17279032 (elective office): 55
+92 - Q9135 (operating system): 54
+93 - Q639907 (medical finding): 53
+94 - Q200779 (genetic disease): 53
+95 - Q175854 (phobia): 53
+96 - Q56019 (military rank): 51
+97 - Q4220917 (film award): 51
+98 - Q1144661 (amusement ride): 51
+99 - Q192234 (camera lens): 51
+100 - Q51404 (pride parade): 51
+101 - Q2671652 (medical test): 50
+102 - Q4830453 (business): 50
+103 - Q265868 (bone): 50
+104 - Q214519 (track gauge): 49
+105 - Q37748 (chromosome): 48
+106 - Q2385804 (educational institution): 48
+107 - Q378427 (literary award): 48
+108 - Q3231690 (automobile model): 48
+109 - Q27644149 (list of members of the Leopoldina – National Academy of Sciences): 48
+110 - Q72284369 (legislative term of the Swiss National Council): 48
+111 - Q31629 (type of sport): 45
+112 - Q43193 (truck): 45
+113 - Q18556754 (colonic disease): 45
+114 - Q177691 (tense): 44
+115 - Q15229229 (theatre award): 44
+116 - Q1183543 (device): 44
+117 - Q1656682 (event): 43
+118 - Q53996674 (conjugation class): 43
+119 - Q937228 (property): 42
+120 - Q9174 (religion): 42
+121 - Q12047392 (legal form): 42
+122 - Q486972 (human settlement): 41
+123 - Q189962 (interval): 41
+124 - Q2695280 (technique): 40
+125 - Q1493054 (type of wood): 40
+126 - Q32880 (architectural style): 40
+127 - Q214609 (base material): 38
+128 - Q7397 (software): 38
+129 - Q865422 (game controller): 37
+130 - Q7725634 (literary work): 37
+131 - Q7188 (government): 37
+132 - Q507057 (Juno Award): 37
+133 - Q464980 (exhibition): 37
+134 - Q391414 (architectural element): 35
+135 - Q3339235 (neurological disorder): 35
+136 - Q16887380 (group): 34
+137 - Q811979 (architectural structure): 34
+138 - Q49848 (document): 34
+139 - Q268592 (economic branch): 33
+140 - Q336 (science): 33
+141 - Q3249551 (process): 33
+142 - Q41207 (coin): 33
+143 - Q483394 (genre): 33
+144 - Q15275719 (recurring event): 33
+145 - Q1799072 (method): 32
+146 - Q179661 (treatment): 32
+147 - Q610398 (system on a chip): 32
+148 - Q466704 (surface-to-air missile): 32
+149 - Q8148 (industry): 31
+150 - Q133311 (tribe): 31
+151 - Q16334295 (group of humans): 31
+152 - Q1788716 (military decoration): 31
+153 - Q56116950 (Film award category): 31
+154 - Q728 (weapon): 30
+155 - Q640506 (cabinet): 30
+156 - Q15809678 (financial product): 29
+157 - Q243249 (air-to-air missile): 28
+158 - Q79529 (chemical substance): 28
+159 - Q708176 (arthropathy): 28
+160 - Q11639 (dance): 28
+161 - Q1229071 (motif): 28
+162 - Q154 (alcoholic beverage): 28
+163 - Q13219666 (tennis tournament): 28
+164 - Q11410 (game): 28
+165 - Q28816538 (aircraft component): 27
+166 - Q34228 (sign language): 27
+167 - Q1307214 (form of government): 27
+168 - Q2297602 (integer sequence): 27
+169 - Q1364556 (music award): 27
+170 - Q42889 (vehicle): 26
+171 - Q9190427 (animal disease): 26
+172 - Q207601 (American Music Awards): 26
+173 - Q655697 (siege engine): 25
+174 - Q3914 (school): 25
+175 - Q131436 (board game): 25
+176 - Q2210277 (chess tournament): 25
+177 - Q193430 (heterocyclic compound): 24
+178 - Q33289 (creole language): 24
+179 - Q49773 (social movement): 24
+180 - Q1207505 (quality): 24
+181 - Q40050 (drink): 24
+182 - Q11446 (ship): 24
+183 - Q643532 (anti-ship missile): 23
+184 - Q12757 (internal combustion engine): 23
+185 - Q18553676 (thoracic disease): 23
+186 - Q14659 (coat of arms): 23
+187 - Q11460 (clothing): 23
+188 - Q40397 (tissue): 22
+189 - Q58778 (system): 22
+190 - Q175263 (data structure): 22
+191 - Q193622 (order): 22
+192 - Q171043 (steam locomotive): 22
+193 - Q690940 (grammatical person): 21
+194 - Q327333 (government agency): 21
+195 - Q483247 (phenomenon): 21
+196 - Q15688633 (ship element): 21
+197 - Q987767 (container): 21
+198 - Q19832712 (historical administrative division): 21
+199 - Q13221722 (third-level administrative country subdivision): 21
+200 - Q500834 (tournament): 21

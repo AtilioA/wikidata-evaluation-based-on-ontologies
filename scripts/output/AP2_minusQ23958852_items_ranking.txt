@@ -1,0 +1,20 @@
+1 - Q22947 (inhabitant): 93
+2 - Q780 (chicken): 56
+3 - Q12136 (disease): 41
+4 - Q4164871 (position): 37
+5 - Q1075 (color): 33
+6 - Q2472587 (people): 30
+7 - Q11862829 (academic discipline): 24
+8 - Q28640 (profession): 14
+9 - Q35798 (executive branch): 13
+10 - Q746549 (dish): 11
+11 - Q200779 (genetic disease): 10
+12 - Q1364556 (music award): 10
+13 - Q2996394 (biological process): 9
+14 - Q169872 (symptom): 8
+15 - Q1788716 (military decoration): 8
+16 - Q13226383 (facility): 6
+17 - Q51404 (pride parade): 5
+18 - Q223393 (literary genre): 5
+19 - Q417841 (protein family): 5
+20 - Q1928978 (viral infectious disease): 5

@@ -4,7 +4,7 @@ import csv
 import wikidata_utils
 
 if __name__ == "__main__":
-    with open("AP1P_objects.txt", "r") as csvfile:
+    with open("../results/AP2.csv", "r") as csvfile:
         reader = csv.reader(csvfile, delimiter=",")
         Aentities = [row[0] for row in reader]
 
@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     # Open output file
     with open(
-        "output/AP1_minusQ23958852_items_ranking.txt", "a+", encoding="utf-8"
+        "output/AP2_minusQ23958852_items_ranking.txt", "a+", encoding="utf-8"
     ) as fRanking:
         for i, (entity, frequency) in enumerate(topEntities[lo:]):
             try:

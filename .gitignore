@@ -144,4 +144,6 @@ dmypy.json
 *.csv
 
 !/results/*
+!/scripts/output/*
+
 *.zip
