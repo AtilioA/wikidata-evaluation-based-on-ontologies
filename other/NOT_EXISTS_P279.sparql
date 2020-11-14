@@ -1,0 +1,11 @@
+wdt:	http://www.wikidata.org/prop/direct/
+rdf:	http://www.w3.org/1999/02/22-rdf-syntax-ns#
+
+SELECT ?x ?y
+WHERE {
+    ?x rdf:type rdf:Resource .
+    ?y rdf:type rdf:Resource .
+    FILTER NOT EXISTS {
+        ?x wdt:P279 ?y .
+    }
+} LIMIT 10

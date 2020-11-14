@@ -4,6 +4,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT ?subjectLabel
 WHERE
 {
+    # Example
     wd:Q66363914 rdfs:label ?subjectLabel .
     FILTER (lang(?subjectLabel) = "" || lang(?subjectLabel) = "en") .
 }

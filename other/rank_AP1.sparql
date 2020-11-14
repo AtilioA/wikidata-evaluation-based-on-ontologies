@@ -1,0 +1,11 @@
+PREFIX xsd:        <http://www.w3.org/2001/XMLSchema#>
+PREFIX wdt:        <http://www.wikidata.org/prop/direct/>
+
+SELECT ?item ?itemId (count(*) as ?count)
+WHERE
+{
+  ?class wdt:P31 ?item ;
+         wdt:P279+ ?item .
+  BIND(xsd:integer(substr(str(?item), 33)) as ?itemId)
+}
+group by ?item ?itemId order by DESC(?count) ?itemId
