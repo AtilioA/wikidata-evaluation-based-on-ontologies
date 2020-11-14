@@ -28,6 +28,7 @@ def remove_instances_Q23958852(entitiesList, instancesof_Q23958852_FILE):
     entitiesList = list(
         map(lambda x: remove_prefix(x, WIKIDATA_ENTITY_PREFIX), entitiesList)
     )
+    entitiesList = list(map(lambda x: remove_prefix(x, "wd:"), entitiesList))
 
     # Remove instances of Q23958852 from entities list
     print("Before removing Q23958852:", len(entitiesList))
