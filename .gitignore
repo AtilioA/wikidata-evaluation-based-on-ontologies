@@ -139,5 +139,9 @@ dmypy.json
 .prof
 
 *.*~
-scripts/*.txt
-universe_AP1.txt
+
+*.txt
+*.csv
+
+!/results/*
+*.zip
