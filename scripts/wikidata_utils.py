@@ -1,20 +1,10 @@
 import subprocess
 import ast
 import sys
+import sparql_strings
 
 WIKIDATA_SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
 WIKIDATA_ENTITY_PREFIX = "http://www.wikidata.org/entity/"
-GET_LABEL_SPARQL = """
-PREFIX wd: <http://www.wikidata.org/entity/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-SELECT ?subjectLabel
-WHERE
-{{
-    wd:{entity} rdfs:label ?subjectLabel .
-    FILTER (lang(?subjectLabel) = "" || lang(?subjectLabel) = "en") .
-}}
-"""
 
 
 def remove_instances_Q23958852(entitiesList, instancesof_Q23958852_FILE):
@@ -41,12 +31,12 @@ def remove_instances_Q23958852(entitiesList, instancesof_Q23958852_FILE):
 
 
 def get_entity_label(entity):
-    query = query_stardog(entity)
+    query = query_label_stardog(entity)
     return query["results"]["bindings"][0]["subjectLabel"]["value"]
 
 
-def query_stardog(entity):
-    query_string = GET_LABEL_SPARQL.format(entity=entity)
+def query_label_stardog(entity):
+    query_string = sparql_strings.GET_LABEL_SPARQL.format(entity=entity)
     query = subprocess.run(
         ["stardog", "query", "-f", "json", "WD_749", query_string],
         capture_output=True,
@@ -55,7 +45,19 @@ def query_stardog(entity):
     return ast.literal_eval(query.stdout)
 
 
-def parse_argv():
+def query_subclass_stardog(class_, subclass):
+    query_string = sparql_strings.CHECK_SUBCLASS_SPARQL.format(
+        class_=class_, subclass=subclass
+    )
+    query = subprocess.run(
+        ["stardog", "query", "-f", "json", "WD_749", query_string],
+        capture_output=True,
+        text=True,
+    )
+    return ast.literal_eval(query.stdout)
+
+
+def parse_lo_hi():
     try:
         lo = int(sys.argv[1])
     except IndexError:

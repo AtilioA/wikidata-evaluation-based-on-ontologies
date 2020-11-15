@@ -9,7 +9,7 @@ if __name__ == "__main__":
         Aentities = [row[0] for row in reader]
 
     # Read start and stop arguments from argv
-    lo, hi = wikidata_utils.parse_argv()
+    lo, hi = wikidata_utils.parse_lo_hi()
 
     Aentities = wikidata_utils.remove_instances_Q23958852(
         Aentities, "instancesof_Q23958852_prepared.txt"
