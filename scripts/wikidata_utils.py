@@ -45,10 +45,13 @@ def query_label_stardog(entity):
     return ast.literal_eval(query.stdout)
 
 
-def query_subclass_stardog(class_, subclass):
-    query_string = sparql_strings.CHECK_SUBCLASS_SPARQL.format(
-        class_=class_, subclass=subclass
+def query_subclass_stardog(class_, subclasses):
+    CHECK_SUBCLASS_SPARQL = sparql_strings.create_subclass_sparql_string(
+        class_, subclasses
     )
+
+    query_string = CHECK_SUBCLASS_SPARQL
+    print(query_string)
     query = subprocess.run(
         ["stardog", "query", "-f", "json", "WD_749", query_string],
         capture_output=True,

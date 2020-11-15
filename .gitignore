@@ -147,3 +147,4 @@ dmypy.json
 !/scripts/output/*
 
 *.zip
+*incomplete.*

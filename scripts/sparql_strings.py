@@ -10,6 +10,23 @@ WHERE
 }}
 """
 
+
+def create_subclass_sparql_string(class_, subclasses):
+    CHECK_SUBCLASS_SPARQL = """
+    PREFIX wd: <http://www.wikidata.org/entity/>
+    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+    SELECT *
+    WHERE
+    {
+    """
+    for i, subclass in enumerate(subclasses):
+        CHECK_SUBCLASS_SPARQL += f"    BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{class_} . }} as ?isSubclass{i} ) .\n"
+    CHECK_SUBCLASS_SPARQL += "}"
+
+    return CHECK_SUBCLASS_SPARQL
+
+
 CHECK_SUBCLASS_SPARQL = """
 PREFIX wd: <http://www.wikidata.org/entity/>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
@@ -17,15 +34,6 @@ PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 SELECT *
 WHERE
 {{
-  BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{class_} . }} as ?isSubclass1 ) .
-  BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{class_} . }} as ?isSubclass2 ) .
-  BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{class_} . }} as ?isSubclass3 ) .
-  BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{class_} . }} as ?isSubclass4 ) .
-  BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{class_} . }} as ?isSubclass5 ) .
-  BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{class_} . }} as ?isSubclass6 ) .
-  BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{class_} . }} as ?isSubclass7 ) .
-  BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{class_} . }} as ?isSubclass8 ) .
-  BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{class_} . }} as ?isSubclass9 ) .
-  BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{class_} . }} as ?isSubclass10 ) .
+  BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{class_} . }} as ?isSubclass ) .
 }}
 """
