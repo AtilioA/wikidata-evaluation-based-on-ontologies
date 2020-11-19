@@ -32,7 +32,10 @@ def remove_instances_Q23958852(entitiesList, instancesof_Q23958852_FILE):
 
 def get_entity_label(entity):
     query = query_label_stardog(entity)
-    return query["results"]["bindings"][0]["subjectLabel"]["value"]
+    try:
+        return query["results"]["bindings"][0]["subjectLabel"]["value"]
+    except IndexError:
+        return "(Label unavailable)"
 
 
 def query_label_stardog(entity):
@@ -51,7 +54,7 @@ def query_subclass_stardog(class_, subclasses):
     )
 
     query_string = CHECK_SUBCLASS_SPARQL
-    print(query_string)
+    # print(query_string)
     query = subprocess.run(
         ["stardog", "query", "-f", "json", "WD_749", query_string],
         capture_output=True,
