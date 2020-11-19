@@ -148,3 +148,6 @@ dmypy.json
 
 *.zip
 *incomplete.*
+*.gv
+*.pdf
+*.json
