@@ -2,7 +2,7 @@ PREFIX wd: <http://www.wikidata.org/entity/>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?subject ?object ?subjectLabel #?objectLabel
+SELECT ?subject ?object ?subjectLabel
 WHERE
 {
   ?subject wdt:P31 ?object .
@@ -11,7 +11,5 @@ WHERE
    OPTIONAL {
     ?subject rdfs:label ?subjectLabel .
     FILTER (lang(?subjectLabel) = "" || lang(?subjectLabel) = "en") .
-    # ?object rdfs:label ?objectLabel .
-    # FILTER (lang(?objectLabel) = "" || lang(?objectLabel) = "en") .
    }
 }
