@@ -68,14 +68,43 @@ def read_AP1_results(entitiesSet, resultsPath="../queries/results/AP1P_light.jso
         json.dump(entitiesOccurrences, fOccurrence)
 
 
-# def find_subclasses(entities, superclass):
-# print(entities[superclass]["subclasses"])
-# if entities[superclass]["subclasses"]:
-#     return [superclass] + find_subclasses(
-#         entities, entities[superclass]["subclasses"][0]
-#     )
-# else:
-#     return [superclass]
+def graph_from_superclasses_dict(superclassesDictFilename):
+    with open(Path(superclassesDictFilename), "r+", encoding="utf8") as dictFile:
+        entitiesDict = json.load(dictFile)
+    # Filter out entities without any subclasses in the ranking
+    entitiesDict = dict(
+        filter(
+            lambda x: x[1]["subclasses"] != [] or x[1]["subclasses"] == x[1],
+            entitiesDict.items(),
+        )
+    )
+    print(len(entitiesDict))
+
+    dots = []
+    for entity in entitiesDict.items():
+        entityLabel = wikidata_utils.get_entity_label(entity[0])
+        print(f"Building graph for {entity[0]} ({entityLabel})")
+
+        dot = Digraph(comment=entityLabel)
+
+        print(entity[1]["subclasses"])
+        for subclass in entity[1]["subclasses"]:
+            subclassLabel = wikidata_utils.get_entity_label(subclass)
+
+            # If label is unavailable, use ID
+            if subclassLabel != "Label unavailable":
+                dot.node(subclass, f"{subclassLabel}\n{subclass}")
+            else:
+                dot.node(subclass, subclass)
+
+            dot.edge(f"{entityLabel}\n{entity[0]}", subclass, label="P279", dir="back")
+            
+        dots.append(dot)
+        
+        try:
+            dot.render(f"output/dots/AP1_{dot.comment}.gv")
+        except:
+            pass
 
 
 def get_ranking_entity_set(rankingFile):
@@ -95,30 +124,31 @@ def build_tree(entities, dictFilename, ocurrencesFilename):
             entitiesDict.items(),
         )
     )
+    print(filteredEntities)
 
-    dots = []
-    for entity in filteredEntities.items():
-        entityLabel = wikidata_utils.get_entity_label(entity[0])
+    # dots = []
+    # for entity in filteredEntities.items():
+    #     entityLabel = wikidata_utils.get_entity_label(entity[0])
 
-        dot = Digraph(comment=entityLabel)
+    #     dot = Digraph(comment=entityLabel)
 
-        dot.node(entity[0], entityLabel)
-        for subclass in entitiesOccurrencesDict[entity[0]]["subclasses"]:
+    #     dot.node(entity[0], entityLabel)
+    #     for subclass in entitiesOccurrencesDict[entity[0]]["subclasses"]:
 
-            # If label is unavailalble, use ID
-            if subclass["subjectLabel"] != "Label unavailable":
-                dot.node(subclass["subject"], subclass["subjectLabel"])
-            else:
-                dot.node(subclass["subject"], subclass["subject"])
+    #         # If label is unavailalble, use ID
+    #         if subclass["subjectLabel"] != "Label unavailable":
+    #             dot.node(subclass["subject"], subclass["subjectLabel"])
+    #         else:
+    #             dot.node(subclass["subject"], subclass["subject"])
 
-            dot.edge(subclass["subject"], entity[0])
-        dots.append(dot)
+    #         dot.edge(subclass["subject"], entity[0])
+    #     dots.append(dot)
 
-    for dot in dots:
-        try:
-            dot.render(f"output/dots/AP1_{dot.comment}.gv")
-        except:
-            pass
+    # for dot in dots:
+    #     try:
+    #         dot.render(f"output/dots/AP1_{dot.comment}.gv")
+    #     except:
+    #         pass
 
     # dot.node('A', 'King Arthur')
 
@@ -162,32 +192,55 @@ if __name__ == "__main__":
     # read_AP1_results(entitiesSet)
     #     entities = parse_ranking_file(rankingFile)
 
-    build_tree(
-        entities,
-        "output/AP1_trees_incomplete.json",
-        "output/AP1_ranking_entities.json",
-    )
+    # build_tree(
+    #     entities,
+    #     "output/AP1_trees_incomplete.json",
+    #     "output/AP1_ranking_entities.json",
+    # )
 
-    # entitiesDict = {}
-    # for entity in entities:
-    #     entitiesDict[entity] = {"superclasses": [], "subclasses": []}
+    entitiesDict = {}
+    for entity in entities:
+        entitiesDict[entity] = {"superclasses": [], "subclasses": []}
 
     # nEntities = group(groupByN, entities)
     # entitiesSquared = [entities for entity in entities]
 
-    # for entity in entities:
-    #     print(f"\nChecking taxonomic tree for {entity}:", end="")
-    #     for nEntities in group(groupByN, entities):
-    #         querySubclass = wikidata_utils.query_subclass_stardog(entity, nEntities)
+    # filteredEntities = dict(
+    #     filter(
+    #         lambda x: x[1]["superclasses"] == [] or x[1]["superclasses"] == x[1],
+    #         entitiesDict.items(),
+    #     )
+    # )
+    graph_from_superclasses_dict("output/AP1_trees_superclasses.json")
+    # with open(
+    #     Path("output/AP1_trees_superclasses.json"), "r+", encoding="utf8"
+    # ) as jsonFile:
+    #     filteredEntities = json.load(jsonFile)
+    #     # Filter out entities without any subclasses in the ranking
+    #     filteredEntities = dict(
+    #         filter(
+    #             lambda x: x[1]["subclasses"] != [] or x[1]["subclasses"] == x[1],
+    #             filteredEntities.items(),
+    #         )
+    #     )
+    #     print(f"{len(filteredEntities)} entities.")
+
+    # entitiesDict
+    # for entity in filteredEntities.items():
+    #     print(f"\nChecking taxonomic tree for {entity[0]}:")
+    #     for subclass in entity[1]["subclasses"]:
+    #         print(f"Is {subclass} subclass of {entity[0]}?")
+    #         querySubclass = wikidata_utils.query_subclasses_stardog(entity[0], subclass)
+    #         pprint(querySubclass["results"]['bindings'])
+    #         if querySubclass["results"]['bindings']:
+
+    #         # Find all classes between
     #         for i, auxEntity in enumerate(nEntities):
     #             # print(i)
-    #             isSubclass = bool(
-    #                 distutils.util.strtobool(
-    #                     querySubclass["results"]["bindings"][0][f"isSubclass{i}"][
-    #                         "value"
-    #                     ]
-    #                 )
-    #             )
+    #             if querySubclass["results"]["bindings"][0][f"isSubclass{i}"][
+    #                         "entity"
+    #                     ]:
+    #                 isSubclass = True
     #             if isSubclass:
     #                 print(
     #                     f"\n  - Is {nEntities[i]} subclass of {entity}? {isSubclass}",
@@ -201,8 +254,3 @@ if __name__ == "__main__":
     #     Path("output/AP1_trees_incomplete.json"), "w+", encoding="utf8"
     # ) as jsonFile:
     #     json.dump(entitiesDict, jsonFile)
-
-    # with open(
-    #     Path("output/AP1_trees_incomplete.json"), "r+", encoding="utf8"
-    # ) as jsonFile:
-    #     entities = json.load(jsonFile)

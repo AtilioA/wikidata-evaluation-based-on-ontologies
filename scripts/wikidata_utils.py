@@ -35,7 +35,7 @@ def get_entity_label(entity):
     try:
         return query["results"]["bindings"][0]["subjectLabel"]["value"]
     except IndexError:
-        return "(Label unavailable)"
+        return "Label unavailable"
 
 
 def query_label_stardog(entity):
@@ -54,6 +54,22 @@ def query_subclass_stardog(class_, subclasses):
     )
 
     query_string = CHECK_SUBCLASS_SPARQL
+    # print(query_string)
+    query = subprocess.run(
+        ["stardog", "query", "-f", "json", "WD_749", query_string],
+        capture_output=True,
+        text=True,
+    )
+    return ast.literal_eval(query.stdout)
+
+
+def query_subclasses_stardog(class_, subclasses):
+    CHECK_SUBCLASSES_SPARQL = sparql_strings.create_subclasses_sparql_string(
+        class_, subclasses
+    )
+
+    query_string = CHECK_SUBCLASSES_SPARQL
+
     # print(query_string)
     query = subprocess.run(
         ["stardog", "query", "-f", "json", "WD_749", query_string],

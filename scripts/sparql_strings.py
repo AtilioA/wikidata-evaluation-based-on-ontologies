@@ -10,6 +10,29 @@ WHERE
 }}
 """
 
+SUBCLASSOF_GET_ENTITIES_BETWEEN_SPARQL = """
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+SELECT ?entity
+WHERE
+{{
+    wd:{subclass} wdt:P279+ ?entity .
+    ?entity wdt:P279* wd:{superclass}
+}}
+"""
+
+CHECK_SUBCLASS_SPARQL = """
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+SELECT *
+WHERE
+{{
+  BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{class_} . }} as ?isSubclass ) .
+}}
+"""
+
 
 def create_subclass_sparql_string(class_, subclasses):
     CHECK_SUBCLASS_SPARQL = """
@@ -27,13 +50,22 @@ def create_subclass_sparql_string(class_, subclasses):
     return CHECK_SUBCLASS_SPARQL
 
 
-CHECK_SUBCLASS_SPARQL = """
-PREFIX wd: <http://www.wikidata.org/entity/>
-PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+def create_subclasses_sparql_string(superclass, subclasses):
+    if isinstance(subclasses, str):
+        query_string = SUBCLASSOF_GET_ENTITIES_BETWEEN_SPARQL.format(
+            subclass=subclasses, superclass=superclass
+        )
+    else:
+        query_string = """
+        PREFIX wd: <http://www.wikidata.org/entity/>
+        PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 
-SELECT *
-WHERE
-{{
-  BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{class_} . }} as ?isSubclass ) .
-}}
-"""
+        SELECT *
+        WHERE
+        {
+        """
+        for i, subclass in enumerate(subclasses):
+            query_string += f"wd:{subclass} wdt:P279+ ?entity{i} .\n?entity{i} wdt:P279* wd:{superclass} .\n"
+        query_string += "}"
+
+    return query_string
