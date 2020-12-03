@@ -79,6 +79,28 @@ def query_subclasses_stardog(class_, subclasses):
     return ast.literal_eval(query.stdout)
 
 
+
+def create_subclasses_sparql_string(subclass, superclass):
+    if isinstance(subclasses, str):
+        query_string = SUBCLASSOF_GET_ENTITIES_BETWEEN_SPARQL.format(
+            subclass=subclass, superclass=superclass
+        )
+    else:
+        query_string = """
+        PREFIX wd: <http://www.wikidata.org/entity/>
+        PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+        SELECT *
+        WHERE
+        {
+        """
+        for i, subclass in enumerate(subclasses):
+            query_string += f"wd:{subclass} wdt:P279+ ?entity{i} .\n?entity{i} wdt:P279* wd:{superclass} .\n"
+        query_string += "}"
+
+    return query_string
+
+
 def parse_lo_hi():
     try:
         lo = int(sys.argv[1])
