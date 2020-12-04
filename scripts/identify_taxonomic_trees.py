@@ -141,6 +141,7 @@ def graph_from_superclasses_dict(superclassesDictFilename):
                 )
                 for i, subclassBetween in enumerate(subclassesBetween):
                     if i != 0:
+                        if subclassesBetween[i] not in entity[1]["subclasses"]:
                         dot.node(
                             f"{labels[i]}\n{subclassesBetween[i]}",
                             shape="square",
@@ -161,7 +162,8 @@ def graph_from_superclasses_dict(superclassesDictFilename):
                     label="P279",
                     dir="back",
                 )
-            # dot.edge(f"{entityLabel}\n{entity[0]}", subclass, label="P279", dir="back")
+            else:
+                dot.edge(f"{entityLabel}\n{entity[0]}", subclass, label="P279", dir="back")
 
             dots.append(dot)
             try:
