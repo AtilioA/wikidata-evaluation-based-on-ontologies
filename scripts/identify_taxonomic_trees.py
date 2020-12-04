@@ -32,19 +32,21 @@ def find_subclasses_between(subclass, superclass):
     return subclassesJSON
 
 
-def graph_from_superclasses_dict(superclassesDictFilename):
+def graph_from_superclasses_dict(treesDictFilename):
     with open(Path(superclassesDictFilename), "r+", encoding="utf8") as dictFile:
         entitiesDict = json.load(dictFile)
+
     # Filter out entities without any subclasses in the ranking
+    print(f"{len(entitiesDict)} superclasses")
     entitiesDict = dict(
         filter(
-            lambda x: x[1]["subclasses"] != [] or x[1]["subclasses"] == x[1],
+            lambda x: x[1]["subclasses"] != []
+            and (x[1]["superclasses"] == [] or x[0] in x[1]["superclasses"]),
             entitiesDict.items(),
         )
     )
-    print(len(entitiesDict))
+    print(f"{len(entitiesDict)} superclasses")
 
-    dots = []
     for entity in entitiesDict.items():
         entityLabel = wikidata_utils.get_entity_label(entity[0])
         print(f"Building graph for {entity[0]} ({entityLabel})")
@@ -85,13 +87,13 @@ def graph_from_superclasses_dict(superclassesDictFilename):
                 for i, subclassBetween in enumerate(subclassesBetween):
                     if i != 0:
                         if subclassesBetween[i] not in entity[1]["subclasses"]:
-                        dot.node(
-                            f"{labels[i]}\n{subclassesBetween[i]}",
-                            shape="square",
-                            color="#777777",
-                            fontsize="10",
-                            fontcolor="#555555",
-                        )
+                            dot.node(
+                                f"{labels[i]}\n{subclassesBetween[i]}",
+                                shape="square",
+                                color="#777777",
+                                fontsize="10",
+                                fontcolor="#555555",
+                            )
                         dot.edge(
                             f"{labels[i]}\n{subclassesBetween[i]}",
                             f"{labels[i - 1]}\n{subclassesBetween[i - 1]}",
@@ -159,3 +161,4 @@ if __name__ == "__main__":
 
     # graph_from_superclasses_dict("output/AP1_chemical_substance.json")
     graph_from_superclasses_dict("output/AP1_trees_incomplete.json")
+  
