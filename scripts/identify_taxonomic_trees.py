@@ -106,13 +106,13 @@ def graph_from_superclasses_dict(superclassesDictFilename):
         entityLabel = wikidata_utils.get_entity_label(entity[0])
         print(f"Building graph for {entity[0]} ({entityLabel})")
 
-        dot = Digraph(comment=entityLabel)
+        dot = Digraph(comment=entityLabel, strict=True, encoding="utf8")
 
-        print(entity[1]["subclasses"])
+        # print(entity[1]["subclasses"])
         for subclass in entity[1]["subclasses"]:
             subclassLabel = wikidata_utils.get_entity_label(subclass)
 
-            print(subclass, entity[0])
+            # print(subclass, entity[0])
 
             # If label is unavailable, use ID
             if subclassLabel != "Label unavailable":
@@ -126,16 +126,42 @@ def graph_from_superclasses_dict(superclassesDictFilename):
                     wikidata_utils.get_entity_label(subclass)
                     for subclass in subclassesBetween
                 ]
-                dot.edge(f"{labels[0]}\n{subclassesBetween[0]}", subclass, label="P279")
+                dot.node(
+                    f"{labels[0]}\n{subclassesBetween[0]}",
+                    shape="square",
+                    color="#777777",
+                    fontsize="10",
+                    fontcolor="#555555",
+                )
+                dot.edge(
+                    f"{labels[0]}\n{subclassesBetween[0]}",
+                    subclass,
+                    label="P279",
+                    dir="back",
+                )
                 for i, subclassBetween in enumerate(subclassesBetween):
                     if i != 0:
+                        dot.node(
+                            f"{labels[i]}\n{subclassesBetween[i]}",
+                            shape="square",
+                            color="#777777",
+                            fontsize="10",
+                            fontcolor="#555555",
+                        )
                         dot.edge(
                             f"{labels[i]}\n{subclassesBetween[i]}",
                             f"{labels[i - 1]}\n{subclassesBetween[i - 1]}",
                             label="P279",
+                            dir="back",
                         )
 
-            dot.edge(f"{entityLabel}\n{entity[0]}", subclass, label="P279", dir="back")
+                dot.edge(
+                    f"{entityLabel}\n{entity[0]}",
+                    f"{labels[-1]}\n{subclassesBetween[-1]}",
+                    label="P279",
+                    dir="back",
+                )
+            # dot.edge(f"{entityLabel}\n{entity[0]}", subclass, label="P279", dir="back")
 
             dots.append(dot)
             try:
@@ -246,6 +272,7 @@ if __name__ == "__main__":
     #         entitiesDict.items(),
     #     )
     # )
+    # graph_from_superclasses_dict("output/AP1_genre.json")
     graph_from_superclasses_dict("output/AP1_trees_superclasses.json")
     # with open(
     #     Path("output/AP1_trees_superclasses.json"), "r+", encoding="utf8"
