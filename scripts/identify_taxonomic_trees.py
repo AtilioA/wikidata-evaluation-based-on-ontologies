@@ -118,7 +118,7 @@ def graph_from_superclasses_dict(superclassesDictFilename):
             if subclassLabel != "Label unavailable":
                 subclassNodeLabel = f"{subclassLabel}\n{subclass}"
             else:
-                subclassLabel = subclass
+                subclassNodeLabel = subclass
 
             subclassesBetween = find_subclasses_between(subclass, entity[0])
             if subclassesBetween:
@@ -135,7 +135,7 @@ def graph_from_superclasses_dict(superclassesDictFilename):
                 )
                 dot.edge(
                     f"{labels[0]}\n{subclassesBetween[0]}",
-                    subclass,
+                    subclassNodeLabel,
                     label="P279",
                     dir="back",
                 )
@@ -164,7 +164,10 @@ def graph_from_superclasses_dict(superclassesDictFilename):
                 )
             else:
                 dot.edge(
-                    f"{entityLabel}\n{entity[0]}", subclass, label="P279", dir="back"
+                    f"{entityLabel}\n{entity[0]}",
+                    subclassNodeLabel,
+                    label="P279",
+                    dir="back",
                 )
 
             dots.append(dot)
