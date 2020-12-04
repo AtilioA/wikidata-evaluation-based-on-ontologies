@@ -151,3 +151,5 @@ dmypy.json
 *.gv
 *.pdf
 *.json
+!AP1_trees_incomplete.json
+!AP1_trees_superclasses.json
