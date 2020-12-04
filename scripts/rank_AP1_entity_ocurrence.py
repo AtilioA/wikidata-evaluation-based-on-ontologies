@@ -1,7 +1,68 @@
+import re
+import csv
+import json
+from pathlib import Path
 from pprint import pprint
 from collections import Counter
-import csv
+
 import wikidata_utils
+
+
+def find_occurrences_entity(entity, resultsJson):
+    occurrences = {
+        "superclasses": [],
+        "subclasses": [],
+    }
+
+    for result in resultsJson:
+        if entity in result["subject"]:
+            occurrences["superclasses"].append(
+                {"object": result["object"], "objectLabel": ""}
+            )
+        elif entity in result["object"]:
+            occurrences["subclasses"].append(
+                {"subject": result["subject"], "subjectLabel": result["subjectLabel"]}
+            )
+
+    return occurrences
+
+
+def improve_AP1_json_file(resultsPath="../queries/results/AP1P.json"):
+    with open(Path(resultsPath), "r", encoding="utf8") as fAP1:
+        resultsJson = json.load(fAP1)["results"]["bindings"][:5000000]
+        regex_pattern = re.compile(".*?(Q\d+)")
+
+        for i, result in enumerate(resultsJson):
+            resultsJson[i]["object"] = re.search(
+                regex_pattern, resultsJson[i]["object"]["value"]
+            ).group(1)
+            resultsJson[i]["subject"] = re.search(
+                regex_pattern, resultsJson[i]["subject"]["value"]
+            ).group(1)
+            try:
+                resultsJson[i]["subjectLabel"] = resultsJson[i]["subjectLabel"]["value"]
+            except:
+                resultsJson[i]["subjectLabel"] = "Label unavailable"
+        with open("../queries/results/AP1P_light.json", "w+", encoding="utf8") as fAP1L:
+            json.dump(resultsJson, fAP1L)
+    return resultsJson
+
+
+def read_AP1_results(entitiesSet, resultsPath="../queries/results/AP1P_light.json"):
+    try:
+        with open(Path(resultsPath), "r", encoding="utf8") as fAP1:
+            resultsJson = json.load(fAP1)
+    except FileNotFoundError:
+        resultsJson = improve_AP1_json_file(resultsPath="../queries/results/AP1P.json")
+
+    print(len(entitiesSet))
+    entitiesOccurrences = {}
+    for i, entity in enumerate(list(entitiesSet)):
+        entitiesOccurrences[entity] = find_occurrences_entity(entity, resultsJson)
+        print(i)
+    with open("output/AP1_ranking_entities.json", "w+", encoding="utf8") as fOccurrence:
+        json.dump(entitiesOccurrences, fOccurrence)
+
 
 if __name__ == "__main__":
     with open("AP1P_objects.txt", "r") as csvfile:
