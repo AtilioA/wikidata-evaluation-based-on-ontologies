@@ -1,15 +1,12 @@
 import json
 import re
 import sys
-import json
-import distutils.util
 from pathlib import Path
 from pprint import pprint
-from functools import partial
-from itertools import zip_longest
 
 import wikidata_utils
 from graphviz import Digraph
+
 
 def find_subclasses_between(subclass, superclass):
     subclassesJSON = wikidata_utils.query_subclasses_stardog(superclass, subclass)[
@@ -28,12 +25,17 @@ def find_subclasses_between(subclass, superclass):
         pass
 
     pprint(f"JSON: {subclassesJSON}")
-    subclassesJSON.remove(superclass)
+
+    try:
+        subclassesJSON.remove(superclass)
+    except:
+        pass
+
     return subclassesJSON
 
 
 def graph_from_superclasses_dict(treesDictFilename):
-    with open(Path(superclassesDictFilename), "r+", encoding="utf8") as dictFile:
+    with open(Path(treesDictFilename), "r+", encoding="utf8") as dictFile:
         entitiesDict = json.load(dictFile)
 
     # Filter out entities without any subclasses in the ranking
@@ -161,4 +163,4 @@ if __name__ == "__main__":
 
     # graph_from_superclasses_dict("output/AP1_chemical_substance.json")
     graph_from_superclasses_dict("output/AP1_trees_incomplete.json")
-  
+
