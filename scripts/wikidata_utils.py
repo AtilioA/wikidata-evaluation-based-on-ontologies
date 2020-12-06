@@ -7,6 +7,18 @@ WIKIDATA_SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
 WIKIDATA_ENTITY_PREFIX = "http://www.wikidata.org/entity/"
 
 
+def regex_match_QID(entitiesList):
+    regex_pattern = re.compile(".*?(Q\d+)")
+    
+    parsedQIDList = [
+        match.group(1)
+        for match in (regex_pattern.match(entity) for entity in entitiesList)
+        if match
+    ]
+    
+    return parsedQIDList
+
+
 def remove_instances_Q23958852(entitiesList, instancesof_Q23958852_FILE):
     # Open file with instances of Q23958852 and adjust strings for comparison
     with open(instancesof_Q23958852_FILE, "r", encoding="utf-8") as fAP1P:
@@ -77,7 +89,6 @@ def query_subclasses_stardog(class_, subclasses):
         text=True,
     )
     return ast.literal_eval(query.stdout)
-
 
 
 def create_subclasses_sparql_string(subclass, superclass):

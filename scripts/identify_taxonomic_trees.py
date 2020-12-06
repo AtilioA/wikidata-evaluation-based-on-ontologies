@@ -20,12 +20,7 @@ def find_subclasses_between(subclass, superclass):
         subclassesList = [result["entity"]["value"] for result in subclassesJSON]
 
         # Look for QID in all the strings
-        regex_pattern = re.compile(".*?(Q\d+)")
-        subclassesList = [
-            m.group(1)
-            for m in (regex_pattern.match(entity) for entity in subclassesList)
-            if m
-        ]
+        subclassesList = wikidata_utils.regex_match_QID(subclassesList)
     except:
         pass
 
@@ -174,10 +169,7 @@ def parse_ranking_file(rankingFile):
     lines = list(map(lambda line: line.strip(), lines))
 
     # Look for the QID in all strings
-    regex_pattern = re.compile(".*?(Q\d+)")
-    rankEntities = [
-        m.group(1) for m in (regex_pattern.match(line) for line in lines) if m
-    ]
+    rankEntities = wikidata_utils.regex_match_QID(lines)
 
     return rankEntities
 
