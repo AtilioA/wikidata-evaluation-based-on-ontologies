@@ -24,7 +24,7 @@ def find_subclasses_between(subclass, superclass):
     except:
         pass
 
-    pprint(f"Subclasses between '{subclass}' and '{superclass}': {subclassesList}")
+    print(f"Subclasses between '{subclass}' and '{superclass}':\n{subclassesList}")
 
     try:
         subclassesList.remove(superclass)
@@ -34,7 +34,9 @@ def find_subclasses_between(subclass, superclass):
     return list(reversed(subclassesList))
 
 
-def graph_from_superclasses_dict(treesDictFilename):
+def graph_from_superclasses_dict(treesDictFilename, **kwargs):
+    rankingEntities = kwargs.get("rankingEntities", None)
+
     with open(Path(treesDictFilename), "r+", encoding="utf8") as dictFile:
         entitiesDict = json.load(dictFile)
 
@@ -71,19 +73,29 @@ def graph_from_superclasses_dict(treesDictFilename):
             print(
                 f'\nFinding subclasses between "{subclassLabel}" and "{entityLabel}"...'
             )
+
             subclassesBetween = find_subclasses_between(subclass, entity[0])
+            subclassStyling = {
+                "shape": "square",
+                "color": "#777777",
+                "fontsize": "10",
+                "fontcolor": "#555555",
+            }
+
+            if rankingEntities:
+                subclassesBetween = [
+                    subclass
+                    for subclass in subclassesBetween
+                    if subclass in rankingEntities
+                ]
+                subclassStyling = {}
+
             if subclassesBetween:
                 labels = [
                     wikidata_utils.get_entity_label(subclass)
                     for subclass in subclassesBetween
                 ]
-                dot.node(
-                    f"{labels[0]}\n{subclassesBetween[0]}",
-                    shape="square",
-                    color="#777777",
-                    fontsize="10",
-                    fontcolor="#555555",
-                )
+                dot.node(f"{labels[0]}\n{subclassesBetween[0]}", **subclassStyling)
                 dot.edge(
                     f"{labels[0]}\n{subclassesBetween[0]}",
                     subclassNodeLabel,
@@ -95,10 +107,7 @@ def graph_from_superclasses_dict(treesDictFilename):
                         if subclassesBetween[i] not in entity[1]["subclasses"]:
                             dot.node(
                                 f"{labels[i]}\n{subclassesBetween[i]}",
-                                shape="square",
-                                color="#777777",
-                                fontsize="10",
-                                fontcolor="#555555",
+                                **subclassStyling,
                             )
                         dot.edge(
                             f"{labels[i]}\n{subclassesBetween[i]}",
@@ -150,8 +159,8 @@ if __name__ == "__main__":
     except:
         fileIn = Path("output/AP1_minusQ23958852_items_ranking.txt")
 
-    # with open(fileIn, "r") as rankingFile:
-    #     entities = parse_ranking_file(rankingFile)
+    with open(fileIn, "r") as rankingFile:
+        entities = parse_ranking_file(rankingFile)
     #     entitiesSet = get_ranking_entity_set(rankingFile)
     # pprint(entitiesSet)
 
@@ -165,6 +174,6 @@ if __name__ == "__main__":
     # for entity in entities:
     #     entitiesDict[entity] = {"superclasses": [], "subclasses": []}
 
-    graph_from_superclasses_dict("output/AP1_system.json")
-    # graph_from_superclasses_dict("output/AP1_trees_incomplete.json")
+    # graph_from_superclasses_dict("output/AP1_system.json", rankingEntities=entities)
+    graph_from_superclasses_dict("output/AP1_trees_incomplete.json")
 
