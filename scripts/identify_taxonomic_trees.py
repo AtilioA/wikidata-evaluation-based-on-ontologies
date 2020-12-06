@@ -9,29 +9,29 @@ from graphviz import Digraph
 
 
 def find_subclasses_between(subclass, superclass):
-    subclassesJSON = wikidata_utils.query_subclasses_stardog(superclass, subclass)[
+    subclassesList = wikidata_utils.query_subclasses_stardog(superclass, subclass)[
         "results"
     ]["bindings"]
 
     try:
-        subclassesJSON = [result["entity"]["value"] for result in subclassesJSON]
+        subclassesList = [result["entity"]["value"] for result in subclassesList]
         regex_pattern = re.compile(".*?(Q\d+)")
-        subclassesJSON = [
+        subclassesList = [
             m.group(1)
-            for m in (regex_pattern.match(entity) for entity in subclassesJSON)
+            for m in (regex_pattern.match(entity) for entity in subclassesList)
             if m
         ]
     except:
         pass
 
-    pprint(f"JSON: {subclassesJSON}")
+    pprint(f"Subclasses between '{subclass}' and '{superclass}': {subclassesList}")
 
     try:
-        subclassesJSON.remove(superclass)
+        subclassesList.remove(superclass)
     except:
         pass
 
-    return subclassesJSON
+    return list(reversed(subclassesList))
 
 
 def graph_from_superclasses_dict(treesDictFilename):
@@ -39,7 +39,6 @@ def graph_from_superclasses_dict(treesDictFilename):
         entitiesDict = json.load(dictFile)
 
     # Filter out entities without any subclasses in the ranking
-    print(f"{len(entitiesDict)} superclasses")
     entitiesDict = dict(
         filter(
             lambda x: x[1]["subclasses"] != []
@@ -56,6 +55,8 @@ def graph_from_superclasses_dict(treesDictFilename):
         dot = Digraph(comment=entityLabel, strict=True, encoding="utf8")
 
         # print(entity[1]["subclasses"])
+        dot.node(f"{entityLabel}\n{entity[0]}", fontsize="24")
+
         for subclass in entity[1]["subclasses"]:
             subclassLabel = wikidata_utils.get_entity_label(subclass)
 
@@ -67,6 +68,9 @@ def graph_from_superclasses_dict(treesDictFilename):
             else:
                 subclassNodeLabel = subclass
 
+            print(
+                f'\nFinding subclasses between "{subclassLabel}" and "{entityLabel}"...'
+            )
             subclassesBetween = find_subclasses_between(subclass, entity[0])
             if subclassesBetween:
                 labels = [
@@ -161,6 +165,6 @@ if __name__ == "__main__":
     # for entity in entities:
     #     entitiesDict[entity] = {"superclasses": [], "subclasses": []}
 
-    # graph_from_superclasses_dict("output/AP1_chemical_substance.json")
-    graph_from_superclasses_dict("output/AP1_trees_incomplete.json")
+    graph_from_superclasses_dict("output/AP1_system.json")
+    # graph_from_superclasses_dict("output/AP1_trees_incomplete.json")
 
