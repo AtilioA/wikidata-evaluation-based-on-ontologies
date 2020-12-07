@@ -1,5 +1,4 @@
 import json
-import re
 import sys
 from pathlib import Path
 from pprint import pprint
@@ -24,7 +23,12 @@ def find_subclasses_between(subclass, superclass):
     except:
         pass
 
-    # print(f"Subclasses between '{subclass}' and '{superclass}':\n{subclassesList}")
+    print(f"Subclasses between '{subclass}' and '{superclass}':\n{subclassesList}")
+    # subclassLabels = [
+    #     wikidata_utils.get_entity_label(subclass) for subclass in subclassesList
+    # ]
+    # print(subclassLabels)
+    # print("")
 
     try:
         # Remove superclass from the list (it is included by SPARQL)
@@ -47,7 +51,7 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
     entitiesDict = dict(
         filter(
             lambda x: x[1]["subclasses"] != []
-            and (x[1]["superclasses"] == [] or x[0] in x[1]["superclasses"]),
+            and (x[1]["superclasses"] == [] or [x[0]] == x[1]["superclasses"]),
             entitiesDict.items(),
         )
     )
@@ -76,17 +80,18 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                 subclassNodeLabel = subclass
 
             print(
-                f'\nFinding subclasses between "{subclassLabel}" and "{entityLabel}"...'
+                f'Finding subclasses between "{subclassLabel}" and "{entityLabel}"...'
             )
 
             subclassesBetween = find_subclasses_between(subclass, entity[0])
             # Default styling for intermediary subclasses
-            subclassStyling = {
+            subclassNodeArgs = {
                 "shape": "square",
                 "color": "#777777",
                 "fontsize": "10",
                 "fontcolor": "#555555",
             }
+            edgeLabel = "P279"
 
             if rankingEntities:
                 # Filter out subclasses that aren't from the ranking
@@ -96,7 +101,8 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                     if subclass in rankingEntities
                 ]
                 # Use no particular styling instead
-                subclassStyling = {}
+                subclassNodeArgs = {}
+                edgeLabel = "P279+"
 
             if subclassesBetween:
                 # Get labels for each subclass in between
@@ -107,14 +113,14 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
 
                 # Create node for each subclass
                 dot.node(
-                    f"{subclassLabels[0]}\n{subclassesBetween[0]}", **subclassStyling
+                    f"{subclassLabels[0]}\n{subclassesBetween[0]}", **subclassNodeArgs
                 )
 
                 # Connect main subclass to its immediate superclass (note the dir="back")
                 dot.edge(
                     f"{subclassLabels[0]}\n{subclassesBetween[0]}",
                     subclassNodeLabel,
-                    label="P279",
+                    label=edgeLabel,
                     dir="back",
                 )
                 for i, subclassBetween in enumerate(subclassesBetween):
@@ -125,22 +131,22 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                             # Create it
                             dot.node(
                                 f"{subclassLabels[i]}\n{subclassesBetween[i]}",
-                                **subclassStyling,
+                                **subclassNodeArgs,
                             )
 
-                        # Connect each subclass to its immediate superclass
-                        dot.edge(
-                            f"{subclassLabels[i]}\n{subclassesBetween[i]}",
-                            f"{subclassLabels[i - 1]}\n{subclassesBetween[i - 1]}",
-                            label="P279",
-                            dir="back",
-                        )
+                            # Connect each subclass to its immediate superclass
+                            dot.edge(
+                                f"{subclassLabels[i - 1]}\n{subclassesBetween[i - 1]}",
+                                f"{subclassLabels[i]}\n{subclassesBetween[i]}",
+                                label=edgeLabel,
+                                dir="back",
+                            )
 
                 # Connect the topmost superclass to the main superclass, i.e., the entity
                 dot.edge(
                     f"{entityLabel}\n{entity[0]}",
-                    f"{subclassLabels[-1]}\n{subclassesBetween[-1]}",
-                    label="P279",
+                    f"{subclassLabels[0]}\n{subclassesBetween[0]}",
+                    label=edgeLabel,
                     dir="back",
                 )
             else:
@@ -148,13 +154,16 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                 dot.edge(
                     f"{entityLabel}\n{entity[0]}",
                     subclassNodeLabel,
-                    label="P279",
+                    label=edgeLabel,
                     dir="back",
                 )
 
             # Not having graphviz properly installed might raise an exception
             try:
-                dot.render(f"output/dots/AP1_{dot.comment}.gv")
+                if rankingEntities:
+                    dot.render(f"output/dots/AP1_{dot.comment}.gv")
+                else:
+                    dot.render(f"output/dots/AP1_{dot.comment}_intermediary.gv")
             except:
                 pass
 
@@ -190,6 +199,8 @@ if __name__ == "__main__":
     #     "output/AP1_ranking_entities.json",
     # )
 
-    # graph_from_superclasses_dict("output/AP1_system.json", rankingEntities=entities)
-    graph_from_superclasses_dict("output/AP1_trees_incomplete.json")
+    # graph_from_superclasses_dict("output/AP1_product.json", rankingEntities=entities)
+    graph_from_superclasses_dict(
+        "output/AP1_trees_incomplete.json", rankingEntities=entities
+    )
 

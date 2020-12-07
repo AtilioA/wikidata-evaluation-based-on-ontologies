@@ -36,7 +36,7 @@ WHERE
 
 def create_subclass_sparql_string(entity, subclasses):
     # Create query string to check if one or more subclasses are subclasses of an entity
-    
+
     CHECK_SUBCLASS_SPARQL = """
     PREFIX wd: <http://www.wikidata.org/entity/>
     PREFIX wdt: <http://www.wikidata.org/prop/direct/>
@@ -45,8 +45,12 @@ def create_subclass_sparql_string(entity, subclasses):
     WHERE
     {
     """
-    for i, subclass in enumerate(subclasses):
-        CHECK_SUBCLASS_SPARQL += f"    BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{entity} . }} as ?isSubclass{i} ) .\n"
+    if isinstance(subclasses, str):
+        print(f"is {subclasses} subclass of {entity}?")
+        CHECK_SUBCLASS_SPARQL += f"    BIND( EXISTS {{ wd:{subclasses} wdt:P279+ wd:{entity} . }} as ?isSubclass0 ) .\n"
+    else:
+        for i, subclass in enumerate(subclasses):
+            CHECK_SUBCLASS_SPARQL += f"    BIND( EXISTS {{ wd:{subclass} wdt:P279+ wd:{entity} . }} as ?isSubclass{i} ) .\n"
     CHECK_SUBCLASS_SPARQL += "}"
 
     return CHECK_SUBCLASS_SPARQL
@@ -54,7 +58,7 @@ def create_subclass_sparql_string(entity, subclasses):
 
 def create_subclasses_sparql_string(superclass, subclasses):
     # Create query string to check for subclasses between a superclass and one or more subclasses
-    
+
     if isinstance(subclasses, str):
         query_string = SUBCLASSOF_GET_ENTITIES_BETWEEN_SPARQL.format(
             subclass=subclasses, superclass=superclass
