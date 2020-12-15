@@ -153,3 +153,4 @@ dmypy.json
 *.json
 !AP1_trees_incomplete.json
 !AP1_trees_superclasses.json
+queries/*.sparql
