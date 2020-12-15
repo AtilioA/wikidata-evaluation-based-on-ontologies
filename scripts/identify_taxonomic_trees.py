@@ -140,13 +140,13 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                 # Ligar subclasse à primeira entidade intermediária
                 # Connect main subclass to its immediate superclass (note the dir="back")
                 print(
-                    f"(First) Joining {subclassNodeLabel.split(NL)[0]} ({subclassNodeLabel.split(NL)[1]}) and {subclassLabels[-1]} ({list(subclassesBetween)[-1]})"
+                    f"(First) Marking {subclassNodeLabel.split(NL)[0]} ({subclassNodeLabel.split(NL)[1]}) as subclass of {subclassLabels[-1]} ({list(subclassesBetween)[-1]})"
                 )
                 dot.edge(
-                    f"{subclassLabels[-1]}\n{list(subclassesBetween)[-1]}",
                     subclassNodeLabel,
+                    f"{subclassLabels[-1]}\n{list(subclassesBetween)[-1]}",
                     label="P279+",
-                    dir="back",
+                    # dir="back",
                 )
 
                 # Para cada entidade intermediária:
@@ -184,24 +184,53 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                     #     subclassesBetween[list(subclassesBetween)[i]]
                     #     and subclassesBetween[list(subclassesBetween)[i + 1]]
                     # ):
-                    print(
-                        f"  (For) Joining {subclassLabels[i + 1]} ({list(subclassesBetween)[i + 1]}) and {subclassLabels[i]} ({list(subclassesBetween)[i]})"
-                    )
-                    dot.edge(
-                        f"{subclassLabels[i]}\n{list(subclassesBetween)[i]}",
-                        f"{subclassLabels[i + 1]}\n{list(subclassesBetween)[i + 1]}",
-                        label="P279+",
-                        dir="back",
-                    )
+
+                    # Check if should be connected
+                    for j, entityAbove in enumerate(list(subclassesBetween)[i:]):
+                        checkSubclass = list(subclassesBetween)[i]
+                        checkSubclassLabel = subclassLabels[i]
+                        if i == 0:
+                            checkSubclass = subclass
+                            checkSubclassLabel = subclassLabel
+
+                        isSubclass = wikidata_utils.query_subclass_stardog(
+                            entityAbove, checkSubclass, transitive=True
+                        )["results"]["bindings"][0]["isSubclass0"]["value"]
+                        isSubclass = isSubclass.lower() == "true"
+                        print(
+                            f"  (For) Is {checkSubclass} subclass of {entityAbove}? {isSubclass}"
+                        )
+                        if isSubclass:
+                            print(
+                                f"    (For) Marking {checkSubclassLabel} ({checkSubclass}) as subclass of {subclassLabels[i + j]} ({entityAbove})"
+                            )
+                            dot.edge(
+                                f"{checkSubclassLabel}\n{checkSubclass}",
+                                f"{subclassLabels[i + j]}\n{entityAbove}",
+                                label="P279+",
+                                # dir="back",
+                            )
+
+                        # print(
+                        #     f"  (For) Marking {subclassLabels[i]} ({list(subclassesBetween)[i]}) as subclass of {subclassLabels[i + 1]} ({list(subclassesBetween)[i + 1]})"
+                        # )
+                        # dot.edge(
+                        #     f"{subclassLabels[i]}\n{list(subclassesBetween)[i]}",
+                        #     f"{subclassLabels[i + 1]}\n{list(subclassesBetween)[i + 1]}",
+                        #     label="P279+",
+                        #     # dir="back",
+                        # )
 
                 # Ligar última entidade intermediária à entidade
                 # Connect the topmost superclass to the main superclass, i.e., the entity
-                print(f"(Last) Joining {subclassLabels[0]} and {entityLabel}")
+                print(
+                    f"(Last) Marking {subclassLabels[0]} as subclass of {entityLabel}"
+                )
                 dot.edge(
-                    f"{entityLabel}\n{entity[0]}",
                     f"{subclassLabels[0]}\n{list(subclassesBetween)[0]}",
+                    f"{entityLabel}\n{entity[0]}",
                     label="P279+",
-                    dir="back",
+                    # dir="back",
                 )
 
             # Caso contrário:
@@ -256,9 +285,11 @@ if __name__ == "__main__":
         #     "output/AP1_ranking_entities.json",
         # )
 
-        # graph_from_superclasses_dict("output/AP1_system.json", rankingEntities=entities)
-        # graph_from_superclasses_dict("output/AP1_trees_incomplete.json")
         graph_from_superclasses_dict(
-            "output/AP1_product.json", rankingEntities=entities
+            "output/AP1_product copy.json", rankingEntities=entities
         )
+        # graph_from_superclasses_dict("output/AP1_trees_incomplete.json")
+        # graph_from_superclasses_dict(
+        # "output/AP1_trees_incomplete.json", rankingEntities=entities
+        # )
 
