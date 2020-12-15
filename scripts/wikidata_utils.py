@@ -70,11 +70,11 @@ def query_label_stardog(entity):
     return ast.literal_eval(query.stdout)
 
 
-def query_subclass_stardog(entity, subclasses):
+def query_subclass_stardog(entity, subclasses, transitive=True):
     # Query to check if one or more subclasses are subclasses of an entity
 
     CHECK_SUBCLASS_SPARQL = sparql_strings.create_subclass_sparql_string(
-        entity, subclasses
+        entity, subclasses, transitive
     )
 
     query_string = CHECK_SUBCLASS_SPARQL

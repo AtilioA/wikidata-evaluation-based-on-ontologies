@@ -6,6 +6,8 @@ from pprint import pprint
 import wikidata_utils
 from graphviz import Digraph
 
+NL = "\n"
+
 
 def find_subclasses_between(subclass, superclass):
     # Query Stardog for subclasses
@@ -41,6 +43,10 @@ def find_subclasses_between(subclass, superclass):
 
 
 def graph_from_superclasses_dict(treesDictFilename, **kwargs):
+    # PROBLEMA: Dado um dicionário com entidades, suas superclasses e subclasses, construir um grafo, mantendo hierarquia das entidades
+    # INPUT: Dicionário com entidades, suas superclasses e subclasses
+    # OUTPUT: Grafo que exibe árvores taxonômicas
+
     # Optional argument; if it exists, will include only entities from the ranking
     rankingEntities = kwargs.get("rankingEntities", None)
 
@@ -48,6 +54,7 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
         entitiesDict = json.load(dictFile)
 
     # Filter out entities without any subclasses in the ranking
+    # EntidadesDeInteresse := entidades sem superclasse ou cujas únicas superclasses sejam elas mesmas
     entitiesDict = dict(
         filter(
             lambda x: x[1]["subclasses"] != []
@@ -58,6 +65,8 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
     # Number of remaining entities
     print(f"{len(entitiesDict)} superclasses")
 
+    nodesDict = {}
+    # Para cada entidade de interesse:
     for entity in entitiesDict.items():
         # Get label for each main entity
         entityLabel = wikidata_utils.get_entity_label(entity[0])
@@ -67,8 +76,12 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
         dot = Digraph(comment=entityLabel, strict=True, encoding="utf8")
 
         # Create bigger node for each main entity
+        # Criar nó da entidade
         dot.node(f"{entityLabel}\n{entity[0]}", fontsize="24")
+        # Adicionar QID da entidade no dicionário de nós
+        nodesDict[entity[0]] = True
 
+        # Para cada subclasse da entidade:
         for subclass in entity[1]["subclasses"]:
             # Get label for each subclass
             subclassLabel = wikidata_utils.get_entity_label(subclass)
@@ -83,7 +96,17 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                 f'Finding subclasses between "{subclassLabel}" and "{entityLabel}"...'
             )
 
+            # print(f"{subclass} já tem node? {nodesDict.get(subclass, False)}")
+            # print(subclassLabel)
+            if not nodesDict.get(subclass, False):
+                # Criar nó da subclasse
+                dot.node(f"{subclassLabel}\n{subclass}")
+                # Adicionar QID da subclasse no dicionário de nós
+                nodesDict[subclass] = True
+
+            # Realizar uma query para descobrir entidades intermediárias entre a entidade e a subclasse (lista ordenada)
             subclassesBetween = find_subclasses_between(subclass, entity[0])
+
             # Default styling for intermediary subclasses
             subclassNodeArgs = {
                 "shape": "square",
@@ -95,66 +118,138 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
 
             if rankingEntities:
                 # Filter out subclasses that aren't from the ranking
-                subclassesBetween = [
-                    subclass
+                subclassesBetween = {
+                    subclass: True
                     for subclass in subclassesBetween
                     if subclass in rankingEntities
-                ]
+                }
+
+                print(f"Our list: {subclassesBetween}")
+
+                #  [
+                #     subclass
+                #     for subclass in subclassesBetween
+                #     if subclass in rankingEntities
+                # ]
                 # Use no particular styling instead
                 subclassNodeArgs = {}
                 edgeLabel = "P279+"
 
+            # Se existirem:
             if subclassesBetween:
                 # Get labels for each subclass in between
                 subclassLabels = [
                     wikidata_utils.get_entity_label(subclass)
-                    for subclass in subclassesBetween
+                    for subclass in list(subclassesBetween)
                 ]
 
-                # Create node for each subclass
-                dot.node(
-                    f"{subclassLabels[0]}\n{subclassesBetween[0]}", **subclassNodeArgs
-                )
-
+                # Ligar subclasse à primeira entidade intermediária
                 # Connect main subclass to its immediate superclass (note the dir="back")
-                dot.edge(
-                    f"{subclassLabels[0]}\n{subclassesBetween[0]}",
-                    subclassNodeLabel,
-                    label=edgeLabel,
-                    dir="back",
+                print(
+                    f"(First) Marking {subclassNodeLabel.split(NL)[0]} ({subclassNodeLabel.split(NL)[1]}) as subclass of {subclassLabels[-1]} ({list(subclassesBetween)[-1]})"
                 )
+                dot.edge(
+                    subclassNodeLabel,
+                    f"{subclassLabels[-1]}\n{list(subclassesBetween)[-1]}",
+                    label="P279+",
+                    # dir="back",
+                )
+
+                # Para cada entidade intermediária:
                 for i, subclassBetween in enumerate(subclassesBetween):
-                    # Skip the first (see above)
-                    if i != 0:
-                        # If it isn't in the list, it does not have a node
-                        if subclassesBetween[i] not in entity[1]["subclasses"]:
-                            # Create it
-                            dot.node(
-                                f"{subclassLabels[i]}\n{subclassesBetween[i]}",
-                                **subclassNodeArgs,
-                            )
+                    # print(
+                    #     f"{subclassBetween} já tem node? {nodesDict.get(subclassBetween, False)}"
+                    # )
+                    if not nodesDict.get(subclassBetween, False):
+                        # Criar nó para entidade intermediária
+                        # Create node for each subclass
+                        dot.node(
+                            f"{subclassLabels[i]}\n{subclassBetween}",
+                            **subclassStyling,
+                        )
+                        # Adicionar QID da entidade intermediária no dicionário de nós
+                        nodesDict[subclassBetween] = True
 
-                            # Connect each subclass to its immediate superclass
+                # Para cada entidade intermediária:
+                for i, subclassBetween in enumerate(list(subclassesBetween)[:-1]):
+                    # # If it isn't in the list, it does not have a node
+                    # if list(subclassesBetween)[i] not in entity[1]["subclasses"]:
+                    #     # Create it
+                    #     dot.node(
+                    #         f"{subclassLabels[i]}\n{list(subclassesBetween)[i]}",
+                    #         **subclassStyling,
+                    #     )
+
+                    # Ligar entidade intermediária à próxima
+                    # Connect each subclass to its immediate superclass
+
+                    # print(subclassesBetween[list(subclassesBetween)[i]])
+                    # print(subclassesBetween[list(subclassesBetween)[i + 1]])
+                    # If both entries are active
+                    # if (
+                    #     subclassesBetween[list(subclassesBetween)[i]]
+                    #     and subclassesBetween[list(subclassesBetween)[i + 1]]
+                    # ):
+
+                    # Check if should be connected
+                    for j, entityAbove in enumerate(list(subclassesBetween)[i:]):
+                        checkSubclass = list(subclassesBetween)[i]
+                        checkSubclassLabel = subclassLabels[i]
+                        if i == 0:
+                            checkSubclass = subclass
+                            checkSubclassLabel = subclassLabel
+
+                        isSubclass = wikidata_utils.query_subclass_stardog(
+                            entityAbove, checkSubclass, transitive=True
+                        )["results"]["bindings"][0]["isSubclass0"]["value"]
+                        isSubclass = isSubclass.lower() == "true"
+                        print(
+                            f"  (For) Is {checkSubclass} subclass of {entityAbove}? {isSubclass}"
+                        )
+                        if isSubclass:
+                            print(
+                                f"    (For) Marking {checkSubclassLabel} ({checkSubclass}) as subclass of {subclassLabels[i + j]} ({entityAbove})"
+                            )
                             dot.edge(
-                                f"{subclassLabels[i - 1]}\n{subclassesBetween[i - 1]}",
-                                f"{subclassLabels[i]}\n{subclassesBetween[i]}",
-                                label=edgeLabel,
-                                dir="back",
+                                f"{checkSubclassLabel}\n{checkSubclass}",
+                                f"{subclassLabels[i + j]}\n{entityAbove}",
+                                label="P279+",
+                                # dir="back",
                             )
 
+                        # print(
+                        #     f"  (For) Marking {subclassLabels[i]} ({list(subclassesBetween)[i]}) as subclass of {subclassLabels[i + 1]} ({list(subclassesBetween)[i + 1]})"
+                        # )
+                        # dot.edge(
+                        #     f"{subclassLabels[i]}\n{list(subclassesBetween)[i]}",
+                        #     f"{subclassLabels[i + 1]}\n{list(subclassesBetween)[i + 1]}",
+                        #     label="P279+",
+                        #     # dir="back",
+                        # )
+
+                # Ligar última entidade intermediária à entidade
                 # Connect the topmost superclass to the main superclass, i.e., the entity
-                dot.edge(
-                    f"{entityLabel}\n{entity[0]}",
-                    f"{subclassLabels[0]}\n{subclassesBetween[0]}",
-                    label=edgeLabel,
-                    dir="back",
+                print(
+                    f"(Last) Marking {subclassLabels[0]} as subclass of {entityLabel}"
                 )
+                dot.edge(
+                    f"{subclassLabels[0]}\n{list(subclassesBetween)[0]}",
+                    f"{entityLabel}\n{entity[0]}",
+                    label="P279+",
+                    # dir="back",
+                )
+
+            # Caso contrário:
             else:
+                # Ligar entidade a subclasse diretamente
                 # If there are no subclasses in between, connect subclass and entity directly
+                print(
+                    f"Joining {subclassNodeLabel.split(NL)[0]} ({subclassNodeLabel.split(NL)[1]}) and {entityLabel} ({entity[0]})"
+                )
                 dot.edge(
                     f"{entityLabel}\n{entity[0]}",
                     subclassNodeLabel,
-                    label=edgeLabel,
+                    label="P279+",
                     dir="back",
                 )
 
@@ -191,16 +286,19 @@ if __name__ == "__main__":
 
     with open(fileIn, "r") as rankingFile:
         entities = parse_ranking_file(rankingFile)
-    #     entitiesSet = get_ranking_entity_set(rankingFile)
+        #     entitiesSet = get_ranking_entity_set(rankingFile)
 
-    # build_tree(
-    #     entities,
-    #     "output/AP1_trees_incomplete.json",
-    #     "output/AP1_ranking_entities.json",
-    # )
+        # build_tree(
+        #     entities,
+        #     "output/AP1_trees_incomplete.json",
+        #     "output/AP1_ranking_entities.json",
+        # )
 
-    # graph_from_superclasses_dict("output/AP1_product.json", rankingEntities=entities)
-    graph_from_superclasses_dict(
-        "output/AP1_trees_incomplete.json", rankingEntities=entities
-    )
+        graph_from_superclasses_dict(
+            "output/AP1_product copy.json", rankingEntities=entities
+        )
+        # graph_from_superclasses_dict("output/AP1_trees_incomplete.json")
+        # graph_from_superclasses_dict(
+        # "output/AP1_trees_incomplete.json", rankingEntities=entities
+        # )
 
