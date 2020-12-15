@@ -1,7 +1,9 @@
 import re
+import re
 import subprocess
 import ast
 import sys
+from pprint import pprint
 import sparql_strings
 
 WIKIDATA_SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
@@ -152,3 +154,13 @@ def add_prefix_wd(str):
     # Add wd: prefix to a string
 
     return f"wd:{str}"
+
+
+def random_color_hex():
+    rgb = ""
+    
+    for _ in "RGB":
+        i = random.randrange(0, 2 ** 8)
+        rgb += i.to_bytes(1, "big").hex()
+        
+    return f"#{rgb}"

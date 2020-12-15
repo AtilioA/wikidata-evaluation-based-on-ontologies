@@ -87,9 +87,10 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                 f'Finding subclasses between "{subclassLabel}" and "{entityLabel}"...'
             )
 
+            argsColor = wikidata_utils.random_color_hex()  # Get random color for each subclass
             if not nodesDict.get(subclass, False):
                 # Create subclass node
-                dot.node(f"{subclassLabel}\n{subclass}")
+                dot.node(f"{subclassLabel}\n{subclass}", color=argsColor)
                 # Add subclass QID to nodes' dict
                 nodesDict[subclass] = True
 
@@ -113,7 +114,7 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                     if subclass in rankingEntities
                 }
 
-                print(f"Our list: {subclassesBetween}")
+                print(f"Subclasses between: {subclassesBetween}")
 
                 # Use no particular styling instead
                 subclassNodeArgs = {}
@@ -134,6 +135,7 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                     subclassNodeLabel,
                     f"{subclassLabels[-1]}\n{list(subclassesBetween)[-1]}",
                     label="P279+",
+                    color=argsColor,
                 )
 
                 for i, subclassBetween in enumerate(subclassesBetween):
@@ -141,7 +143,8 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                         # Create node for each subclass
                         dot.node(
                             f"{subclassLabels[i]}\n{subclassBetween}",
-                            **subclassStyling,
+                            **subclassNodeArgs,
+                            color=argsColor,
                         )
                         # Add intermediary entity QID to nodes' dict
                         nodesDict[subclassBetween] = True
@@ -166,12 +169,13 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                         )
                         if isSubclass:
                             print(
-                                f"    (For) Marking {checkSubclassLabel} ({checkSubclass}) as subclass of {subclassLabels[i + j]} ({entityAbove})"
+                                f"  Marking {checkSubclassLabel} ({checkSubclass}) as subclass of {subclassLabels[i + j]} ({entityAbove})"
                             )
                             dot.edge(
                                 f"{checkSubclassLabel}\n{checkSubclass}",
                                 f"{subclassLabels[i + j]}\n{entityAbove}",
                                 label="P279+",
+                                color=argsColor,
                             )
 
                 # Connect the topmost superclass to the main superclass, i.e., the entity
@@ -182,6 +186,7 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                     f"{subclassLabels[0]}\n{list(subclassesBetween)[0]}",
                     f"{entityLabel}\n{entity[0]}",
                     label="P279+",
+                    color=argsColor,
                 )
 
             else:
@@ -190,18 +195,18 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                     f"Joining {subclassNodeLabel.split(NL)[0]} ({subclassNodeLabel.split(NL)[1]}) and {entityLabel} ({entity[0]})"
                 )
                 dot.edge(
-                    f"{entityLabel}\n{entity[0]}",
                     subclassNodeLabel,
+                    f"{entityLabel}\n{entity[0]}",
                     label="P279+",
-                    dir="back",
+                    color=argsColor,
                 )
 
             # Not having graphviz properly installed might raise an exception
             try:
                 if rankingEntities:
-                    dot.render(f"output/dots/AP1_{dot.comment}.gv")
+                    dot.render(f"output/dots2/AP1_{dot.comment}_2.gv")
                 else:
-                    dot.render(f"output/dots/AP1_{dot.comment}_intermediary.gv")
+                    dot.render(f"output/dots2/AP1_{dot.comment}_intermediary.gv")
             except:
                 pass
 
@@ -231,11 +236,11 @@ if __name__ == "__main__":
         entities = parse_ranking_file(rankingFile)
         #     entitiesSet = get_ranking_entity_set(rankingFile)
 
-        # graph_from_superclasses_dict(
-        #     "output/AP1_product copy.json", rankingEntities=entities
-        # )
         graph_from_superclasses_dict(
-            "output/AP1_trees_incomplete.json", rankingEntities=entities
+            "output/AP1_occurrence.json", rankingEntities=entities
         )
+        # graph_from_superclasses_dict(
+        #     "output/AP1_trees_incomplete.json", rankingEntities=entities
+        # )
         # graph_from_superclasses_dict("output/AP1_trees_incomplete.json")
 
