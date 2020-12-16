@@ -1,3 +1,4 @@
+import time
 import json
 import sys
 from pathlib import Path
@@ -40,6 +41,7 @@ def find_subclasses_between(subclass, superclass):
 
 def graph_from_superclasses_dict(treesDictFilename, **kwargs):
     # PROBLEM: Given a dictionary with entities, their superclasses and subclasses, create a "maximal" graph that displays the relation between entities
+    dotsTime = int(time.time())
 
     # Optional argument; if it exists, will include only entities from the ranking
     rankingEntities = kwargs.get("rankingEntities", None)
@@ -98,7 +100,10 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                 f'Finding subclasses between "{subclassLabel}" and "{entityLabel}"...'
             )
 
-            argsColor = wikidata_utils.random_color_hex()  # Get random color for each subclass
+            # Get random color for each subclass
+            argsColor = (
+                wikidata_utils.random_color_hex()
+            ) 
             if not nodesDict.get(subclass, False):
                 # Create subclass node
                 dot.node(f"{subclassLabel}\n{subclass}", color=argsColor)
@@ -215,10 +220,13 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
             # Not having graphviz properly installed might raise an exception
             try:
                 if rankingEntities:
-                    dot.render(f"output/dots2/AP1_{dot.comment}_2.gv")
+                    dot.render(f"output/dots/dots_{dotsTime}/AP1_{dot.comment}.gv")
                 else:
-                    dot.render(f"output/dots2/AP1_{dot.comment}_intermediary.gv")
+                    dot.render(
+                        f"output/dots/dots_{dotsTime}/AP1_{dot.comment}_intermediary.gv"
+                    )
             except:
+                print("Verify your Graphviz installation or Digraph args")
                 pass
 
 
