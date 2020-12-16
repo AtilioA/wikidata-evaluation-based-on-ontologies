@@ -66,7 +66,18 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
         print(f"\nBuilding graph for {entity[0]} ({entityLabel})")
 
         # Create graph for each main entity
-        dot = Digraph(comment=entityLabel, strict=True, encoding="utf8")
+        nSubclasses = len(entity[1]["subclasses"])
+        nodesep = 0.25
+        ranksep = 1
+        if nSubclasses > 20:
+            nodesep = 0.2
+            ranksep = 4
+        dot = Digraph(
+            comment=entityLabel,
+            strict=True,
+            encoding="utf8",
+            graph_attr={"nodesep": nodesep, "ranksep": ranksep},
+        )
 
         # Create a bigger node for each main entity
         dot.node(f"{entityLabel}\n{entity[0]}", fontsize="24")
