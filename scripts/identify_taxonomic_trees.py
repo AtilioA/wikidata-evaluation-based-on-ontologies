@@ -46,6 +46,9 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
     # Optional argument; if it exists, will include only entities from the ranking
     rankingEntities = kwargs.get("rankingEntities", None)
 
+    remainingEntities = set(rankingEntities)
+    totalEntities = len(remainingEntities)
+
     with open(Path(treesDictFilename), "r+", encoding="utf8") as dictFile:
         entitiesDict = json.load(dictFile)
 
@@ -58,22 +61,24 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
             entitiesDict.items(),
         )
     )
-    # Number of remaining entities
+    # Number of entities to be processed
     print(f"{len(entitiesDict)} superclasses")
 
     nodesDict = {}
     for entity in entitiesDict.items():
         # Get label for each main entity
         entityLabel = wikidata_utils.get_entity_label(entity[0])
-        print(f"\nBuilding graph for {entity[0]} ({entityLabel})")
+        nSubclasses = len(entity[1]["subclasses"])
+
+        print(f"\nBuilding graph for {entity[0]} ({entityLabel}).")
+        print(f"{entityLabel.capitalize()} has at least {nSubclasses} subclasses from the ranking.\n")
 
         # Create graph for each main entity
-        nSubclasses = len(entity[1]["subclasses"])
-        nodesep = 0.25
-        ranksep = 1
-        if nSubclasses > 20:
-            nodesep = 0.2
-            ranksep = 4
+        nodesep = "0.25"
+        ranksep = "1"
+        if nSubclasses > 50:
+            nodesep = "0.2"
+            ranksep = "4"
         dot = Digraph(
             comment=entityLabel,
             strict=True,
@@ -85,6 +90,10 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
         dot.node(f"{entityLabel}\n{entity[0]}", fontsize="24")
         # Add entity QID to nodes' dict
         nodesDict[entity[0]] = True
+
+        print(
+            f"{totalEntities - len(remainingEntities)} entities (of {totalEntities}) from the ranking processed so far."
+        )
 
         for subclass in entity[1]["subclasses"]:
             # Get label for each subclass
@@ -101,9 +110,7 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
             )
 
             # Get random color for each subclass
-            argsColor = (
-                wikidata_utils.random_color_hex()
-            ) 
+            argsColor = wikidata_utils.random_color_hex()
             if not nodesDict.get(subclass, False):
                 # Create subclass node
                 dot.node(f"{subclassLabel}\n{subclass}", color=argsColor)
@@ -154,6 +161,11 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                     color=argsColor,
                 )
 
+                try:
+                    remainingEntities.remove(list(subclassesBetween)[-1])
+                except KeyError:
+                    pass
+
                 for i, subclassBetween in enumerate(subclassesBetween):
                     if not nodesDict.get(subclassBetween, False):
                         # Create node for each subclass
@@ -194,6 +206,19 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                                 color=argsColor,
                             )
 
+                            try:
+                                remainingEntities.remove(checkSubclass)
+                            except KeyError:
+                                pass
+                            try:
+                                remainingEntities.remove(entityAbove)
+                            except KeyError:
+                                pass
+
+                    print(
+                        f"{totalEntities - len(remainingEntities)} entities (of {totalEntities}) from the ranking processed so far."
+                    )
+
                 # Connect the topmost superclass to the main superclass, i.e., the entity
                 print(
                     f"(Last) Marking {subclassLabels[0]} as subclass of {entityLabel}"
@@ -217,6 +242,11 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                     color=argsColor,
                 )
 
+            try:
+                remainingEntities.remove(subclass)
+            except KeyError:
+                pass
+
             # Not having graphviz properly installed might raise an exception
             try:
                 if rankingEntities:
@@ -226,8 +256,15 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                         f"output/dots/dots_{dotsTime}/AP1_{dot.comment}_intermediary.gv"
                     )
             except:
-                print("Verify your Graphviz installation or Digraph args")
+                print("\nVerify your Graphviz installation or Digraph args!\n")
                 pass
+
+        try:
+            remainingEntities.remove(entity[0])
+        except KeyError:
+            pass
+
+    print(remainingEntities)
 
 
 def get_ranking_entity_set(rankingFile):
@@ -255,11 +292,9 @@ if __name__ == "__main__":
         entities = parse_ranking_file(rankingFile)
         #     entitiesSet = get_ranking_entity_set(rankingFile)
 
-        graph_from_superclasses_dict(
-            "output/AP1_occurrence.json", rankingEntities=entities
-        )
         # graph_from_superclasses_dict(
-        #     "output/AP1_trees_incomplete.json", rankingEntities=entities
+        #     "output/AP1_occurrence.json", rankingEntities=entities
         # )
-        # graph_from_superclasses_dict("output/AP1_trees_incomplete.json")
-
+        graph_from_superclasses_dict(
+            "output/AP1_trees_incomplete.json", rankingEntities=entities
+        )
