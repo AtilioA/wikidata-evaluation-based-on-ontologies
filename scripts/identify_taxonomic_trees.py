@@ -45,6 +45,7 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
 
     # Optional argument; if it exists, will include only entities from the ranking
     rankingEntities = kwargs.get("rankingEntities", None)
+    useRandomColors = kwargs.get("useRandomColors", None)
 
     remainingEntities = set(rankingEntities)
     totalEntities = len(remainingEntities)
@@ -74,16 +75,16 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
         print(f"{entityLabel.capitalize()} has at least {nSubclasses} subclasses from the ranking.\n")
 
         # Create graph for each main entity
-        nodesep = "0.25"
-        ranksep = "1"
+        nodesep = "0.1"
+        ranksep = "0.5"
         if nSubclasses > 50:
-            nodesep = "0.2"
-            ranksep = "4"
+            nodesep = "0.15"
+            ranksep = "1"
         dot = Digraph(
             comment=entityLabel,
             strict=True,
             encoding="utf8",
-            graph_attr={"nodesep": nodesep, "ranksep": ranksep},
+            graph_attr={"nodesep": nodesep, "ranksep": ranksep, "rankdir": "BT"},
         )
 
         # Create a bigger node for each main entity
@@ -109,8 +110,12 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                 f'Finding subclasses between "{subclassLabel}" and "{entityLabel}"...'
             )
 
-            # Get random color for each subclass
+            # Get random color for nodes and edges
+            argsColor = "#111111"
+            if useRandomColors:
             argsColor = wikidata_utils.random_color_hex()
+
+            edgeLabel = None
             if not nodesDict.get(subclass, False):
                 # Create subclass node
                 dot.node(f"{subclassLabel}\n{subclass}", color=argsColor)
@@ -127,7 +132,8 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                 "fontsize": "10",
                 "fontcolor": "#555555",
             }
-            edgeLabel = "P279"
+
+            # remainingEntitiesLastIteration = {totalEntities - len(remainingEntities)}
 
             if rankingEntities:
                 # Filter out subclasses that aren't from the ranking
@@ -141,7 +147,7 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
 
                 # Use no particular styling instead
                 subclassNodeArgs = {}
-                edgeLabel = "P279+"
+                # edgeLabel = "P279+"
 
             if subclassesBetween:
                 # Get labels for each subclass in between
@@ -157,8 +163,9 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                 dot.edge(
                     subclassNodeLabel,
                     f"{subclassLabels[-1]}\n{list(subclassesBetween)[-1]}",
-                    label="P279+",
+                    label=edgeLabel,
                     color=argsColor,
+                    arrowhead="o",
                 )
 
                 try:
@@ -202,8 +209,9 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                             dot.edge(
                                 f"{checkSubclassLabel}\n{checkSubclass}",
                                 f"{subclassLabels[i + j]}\n{entityAbove}",
-                                label="P279+",
+                                label=edgeLabel,
                                 color=argsColor,
+                                arrowhead="o",
                             )
 
                             try:
@@ -215,6 +223,7 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                             except KeyError:
                                 pass
 
+                    # if totalEntities - len(remainingEntities) > remainingEntitiesLastIteration:
                     print(
                         f"{totalEntities - len(remainingEntities)} entities (of {totalEntities}) from the ranking processed so far."
                     )
@@ -226,8 +235,9 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                 dot.edge(
                     f"{subclassLabels[0]}\n{list(subclassesBetween)[0]}",
                     f"{entityLabel}\n{entity[0]}",
-                    label="P279+",
+                    label=edgeLabel,
                     color=argsColor,
+                    arrowhead="o",
                 )
 
             else:
@@ -238,8 +248,9 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
                 dot.edge(
                     subclassNodeLabel,
                     f"{entityLabel}\n{entity[0]}",
-                    label="P279+",
+                    label=edgeLabel,
                     color=argsColor,
+                    arrowhead="o",
                 )
 
             try:
