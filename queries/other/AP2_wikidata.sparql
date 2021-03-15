@@ -1,6 +1,0 @@
-PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-
-SELECT ?item
-WHERE {
-    ?classC wdt:P279 ?item ; wdt:P279 ?classB . ?classB wdt:P31 ?item .
-} LIMIT 2

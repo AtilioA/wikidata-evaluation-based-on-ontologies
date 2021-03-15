@@ -1,0 +1,8 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+SELECT *
+WHERE
+{
+  BIND( EXISTS { wd:Q2057971 wdt:P279+ wd:Q2057971 . } as ?isSubclass0 ) .
+}
