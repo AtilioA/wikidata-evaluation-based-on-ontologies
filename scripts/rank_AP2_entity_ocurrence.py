@@ -7,12 +7,13 @@ if __name__ == "__main__":
     with open("../queries/results/AP2.csv", "r") as csvfile:
         reader = csv.reader(csvfile, delimiter=",")
         Aentities = [row[0] for row in reader]
+        print(Aentities)
 
     # Read start and stop arguments from argv
     lo, hi = wikidata_utils.parse_lo_hi()
 
     Aentities = wikidata_utils.remove_instances_Q23958852(
-        Aentities, "instancesof_Q23958852_prepared.txt"
+        Aentities, "other/instancesof_Q23958852.txt"
     )
 
     # Count most frequent entities with Counter
@@ -21,7 +22,7 @@ if __name__ == "__main__":
 
     # Open output file
     with open(
-        "output/AP2_minusQ23958852_items_ranking.txt", "a+", encoding="utf-8"
+        "output/AP2_minusQ23958852_items_ranking.txt", "a+", encoding="utf8"
     ) as fRanking:
         for i, (entity, frequency) in enumerate(topEntities[lo:]):
             try:

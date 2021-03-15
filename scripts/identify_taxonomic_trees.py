@@ -250,9 +250,11 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
             # Not having graphviz properly installed might raise an exception
             try:
                 if rankingEntities:
-                    dot.render(f"output/dots/dots_{dotsTime}/AP1_{dot.comment}.gv")
+                    u = dot.unflatten(stagger=5) # Break graphs into more lines
+                    u.render(f"output/dots/dots_{dotsTime}/AP1_{dot.comment}.gv")
                 else:
-                    dot.render(
+                    u = dot.unflatten(stagger=5) # Break graphs into more lines
+                    u.render(
                         f"output/dots/dots_{dotsTime}/AP1_{dot.comment}_intermediary.gv"
                     )
             except:

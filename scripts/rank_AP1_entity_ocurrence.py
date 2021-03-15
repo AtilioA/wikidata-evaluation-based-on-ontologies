@@ -73,7 +73,7 @@ if __name__ == "__main__":
     lo, hi = wikidata_utils.parse_lo_hi()
 
     Aentities = wikidata_utils.remove_instances_Q23958852(
-        Aentities, "instancesof_Q23958852_prepared.txt"
+        Aentities, "other/instancesof_Q23958852.txt"
     )
 
     # Count most frequent entities with Counter
