@@ -62,6 +62,26 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
             entitiesDict.items(),
         )
     )
+
+    keepEntity = "1"
+    keptDict = {}
+    pprint(entitiesDict.keys())
+    while(len(keepEntity) > 0):
+        if not keptDict:
+            keepEntity = input("What entity to generate graphs for? [Enter] for All: ")
+        else:
+            keepEntity = input("What entity to generate graphs for? [Enter] to leave: ")
+
+        if keepEntity:
+            kept = entitiesDict.pop(keepEntity)
+            keptDict[keepEntity] = kept
+        else:
+            break
+
+        print(f"Kept {keepEntity}")
+    if keptDict:
+        entitiesDict = keptDict
+
     # Number of entities to be processed
     print(f"{len(entitiesDict)} superclasses")
 
@@ -113,7 +133,7 @@ def graph_from_superclasses_dict(treesDictFilename, **kwargs):
             # Get random color for nodes and edges
             argsColor = "#111111"
             if useRandomColors:
-            argsColor = wikidata_utils.random_color_hex()
+                argsColor = wikidata_utils.random_color_hex()
 
             edgeLabel = None
             if not nodesDict.get(subclass, False):
