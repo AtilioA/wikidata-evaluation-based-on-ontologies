@@ -1,0 +1,591 @@
+strict digraph {
+	graph [nodesep=0.15,
+		rankdir=BT,
+		ranksep=1
+	];
+	"property
+Q937228"	[fontsize=24];
+	"property
+Q937228" -> "property
+Q937228"	[arrowhead=o,
+		color="#111111"];
+	"position
+Q4164871"	[color="#111111"];
+	"quality
+Q1207505"	[color="#111111"];
+	"position
+Q4164871" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"quality
+Q1207505" -> "property
+Q937228"	[arrowhead=o,
+		color="#111111"];
+	"disease
+Q12136"	[color="#111111"];
+	"disease
+Q12136" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"health problem
+Q2057971"	[color="#111111"];
+	"disease
+Q12136" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"health problem
+Q2057971" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"health problem
+Q2057971" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"public office
+Q294414"	[color="#111111"];
+	"public office
+Q294414" -> "position
+Q4164871"	[arrowhead=o,
+		color="#111111"];
+	"public office
+Q294414" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"rare disease
+Q929833"	[color="#111111"];
+	"rare disease
+Q929833" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"rare disease
+Q929833" -> "disease
+Q12136"	[arrowhead=o,
+		color="#111111"];
+	"rare disease
+Q929833" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"award
+Q618779"	[color="#111111"];
+	"award
+Q618779" -> "property
+Q937228"	[arrowhead=o,
+		color="#111111"];
+	"developmental defect during embryogenesis
+Q55788864"	[color="#111111"];
+	"developmental defect during embryogenesis
+Q55788864" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"developmental defect during embryogenesis
+Q55788864" -> "disease
+Q12136"	[arrowhead=o,
+		color="#111111"];
+	"developmental defect during embryogenesis
+Q55788864" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"grade of an order
+Q60754876" -> "position
+Q4164871"	[arrowhead=o,
+		color="#111111"];
+	"grade of an order
+Q60754876" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"grade of an order
+Q60754876" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"title of honor
+Q3320743"	[color="#111111"];
+	"grade of an order
+Q60754876" -> "title of honor
+Q3320743"	[arrowhead=o,
+		color="#111111"];
+	"title of honor
+Q3320743" -> "position
+Q4164871"	[arrowhead=o,
+		color="#111111"];
+	"title of honor
+Q3320743" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"title of honor
+Q3320743" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"head and neck disease
+Q55789477"	[color="#111111"];
+	"head and neck disease
+Q55789477" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"head and neck disease
+Q55789477" -> "disease
+Q12136"	[arrowhead=o,
+		color="#111111"];
+	"head and neck disease
+Q55789477" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"infectious disease
+Q18123741"	[color="#111111"];
+	"infectious disease
+Q18123741" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"infectious disease
+Q18123741" -> "disease
+Q12136"	[arrowhead=o,
+		color="#111111"];
+	"infectious disease
+Q18123741" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"academic degree
+Q189533"	[color="#111111"];
+	"academic degree
+Q189533" -> "property
+Q937228"	[arrowhead=o,
+		color="#111111"];
+	"academic degree
+Q189533" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"heritage designation
+Q30634609"	[color="#111111"];
+	"heritage designation
+Q30634609" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"traffic sign
+Q170285"	[color="#111111"];
+	"traffic sign
+Q170285" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"cultural heritage
+Q210272"	[color="#111111"];
+	"cultural heritage
+Q210272" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"cultural heritage
+Q210272" -> "heritage designation
+Q30634609"	[arrowhead=o,
+		color="#111111"];
+	"currency
+Q8142"	[color="#111111"];
+	"currency
+Q8142" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"financial product
+Q15809678"	[color="#111111"];
+	"currency
+Q8142" -> "financial product
+Q15809678"	[arrowhead=o,
+		color="#111111"];
+	"financial product
+Q15809678" -> "property
+Q937228"	[arrowhead=o,
+		color="#111111"];
+	"financial product
+Q15809678" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"political ideology
+Q12909644"	[color="#111111"];
+	"political ideology
+Q12909644" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"noble title
+Q355567"	[color="#111111"];
+	"noble title
+Q355567" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"literary genre
+Q223393"	[color="#111111"];
+	"literary genre
+Q223393" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+	"Anatomical Therapeutic Chemical Classification System
+Q192093"	[color="#111111"];
+	"Anatomical Therapeutic Chemical Classification System
+Q192093" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=4];
+	"bachelor's degree
+Q163727"	[color="#111111"];
+	"bachelor's degree
+Q163727" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"bachelor's degree
+Q163727" -> "academic degree
+Q189533"	[arrowhead=o,
+		color="#111111"];
+	"hereditary disorder
+Q3311537"	[color="#111111"];
+	"hereditary disorder
+Q3311537" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"hereditary disorder
+Q3311537" -> "disease
+Q12136"	[arrowhead=o,
+		color="#111111"];
+	"hereditary disorder
+Q3311537" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"election
+Q40231"	[color="#111111"];
+	"election
+Q40231" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=5];
+	"hereditary title
+Q5737899"	[color="#111111"];
+	"hereditary title
+Q5737899" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"hereditary title
+Q5737899" -> "noble title
+Q355567"	[arrowhead=o,
+		color="#111111"];
+	"file format
+Q235557"	[color="#111111"];
+	"file format
+Q235557" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"symptom
+Q169872"	[color="#111111"];
+	"symptom
+Q169872" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"symptom
+Q169872" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"master's degree
+Q183816"	[color="#111111"];
+	"master's degree
+Q183816" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"master's degree
+Q183816" -> "academic degree
+Q189533"	[arrowhead=o,
+		color="#111111"];
+	"clinical sign
+Q1441305"	[color="#111111"];
+	"clinical sign
+Q1441305" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"polychoron
+Q2155148"	[color="#111111"];
+	"polychoron
+Q2155148" -> "property
+Q937228"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"elective office
+Q17279032"	[color="#111111"];
+	"elective office
+Q17279032" -> "position
+Q4164871"	[arrowhead=o,
+		color="#111111"];
+	"elective office
+Q17279032" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"elective office
+Q17279032" -> "public office
+Q294414"	[arrowhead=o,
+		color="#111111"];
+	"genetic disease
+Q200779"	[color="#111111"];
+	"genetic disease
+Q200779" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"genetic disease
+Q200779" -> "disease
+Q12136"	[arrowhead=o,
+		color="#111111"];
+	"genetic disease
+Q200779" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"genetic disease
+Q200779" -> "hereditary disorder
+Q3311537"	[arrowhead=o,
+		color="#111111"];
+	"phobia
+Q175854"	[color="#111111"];
+	"phobia
+Q175854" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"phobia
+Q175854" -> "disease
+Q12136"	[arrowhead=o,
+		color="#111111"];
+	"phobia
+Q175854" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"phobia
+Q175854" -> "symptom
+Q169872"	[arrowhead=o,
+		color="#111111"];
+	"military rank
+Q56019"	[color="#111111"];
+	"military rank
+Q56019" -> "position
+Q4164871"	[arrowhead=o,
+		color="#111111"];
+	"military rank
+Q56019" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"film award
+Q4220917"	[color="#111111"];
+	"film award
+Q4220917" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"track gauge
+Q214519"	[color="#111111"];
+	"track gauge
+Q214519" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+	"literary award
+Q378427"	[color="#111111"];
+	"literary award
+Q378427" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"legislative term of the Swiss National Council
+Q72284369"	[color="#111111"];
+	"legislative term of the Swiss National Council
+Q72284369" -> "property
+Q937228"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"colonic disease
+Q18556754"	[color="#111111"];
+	"colonic disease
+Q18556754" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"colonic disease
+Q18556754" -> "disease
+Q12136"	[arrowhead=o,
+		color="#111111"];
+	"colonic disease
+Q18556754" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"colonic disease
+Q18556754" -> "rare disease
+Q929833"	[arrowhead=o,
+		color="#111111"];
+	"tense
+Q177691"	[color="#111111"];
+	"tense
+Q177691" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=4];
+	"theatre award
+Q15229229"	[color="#111111"];
+	"theatre award
+Q15229229" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"conjugation class
+Q53996674"	[color="#111111"];
+	"conjugation class
+Q53996674" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=5];
+	"religion
+Q9174"	[color="#111111"];
+	"religion
+Q9174" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"interval
+Q189962"	[color="#111111"];
+	"interval
+Q189962" -> "property
+Q937228"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+	"Juno Award
+Q507057"	[color="#111111"];
+	"Juno Award
+Q507057" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"music award
+Q1364556"	[color="#111111"];
+	"Juno Award
+Q507057" -> "music award
+Q1364556"	[arrowhead=o,
+		color="#111111"];
+	"music award
+Q1364556" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"neurological disorder
+Q3339235"	[color="#111111"];
+	"neurological disorder
+Q3339235" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"neurological disorder
+Q3339235" -> "disease
+Q12136"	[arrowhead=o,
+		color="#111111"];
+	"neurological disorder
+Q3339235" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"coin
+Q41207"	[color="#111111"];
+	"coin
+Q41207" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"coin
+Q41207" -> "financial product
+Q15809678"	[arrowhead=o,
+		color="#111111"];
+	"military decoration
+Q1788716"	[color="#111111"];
+	"military decoration
+Q1788716" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+	"Film award category
+Q56116950" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"Film award category
+Q56116950" -> "film award
+Q4220917"	[arrowhead=o,
+		color="#111111"];
+	"arthropathy
+Q708176"	[color="#111111"];
+	"arthropathy
+Q708176" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"arthropathy
+Q708176" -> "disease
+Q12136"	[arrowhead=o,
+		color="#111111"];
+	"arthropathy
+Q708176" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"animal disease
+Q9190427"	[color="#111111"];
+	"animal disease
+Q9190427" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"animal disease
+Q9190427" -> "disease
+Q12136"	[arrowhead=o,
+		color="#111111"];
+	"animal disease
+Q9190427" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"American Music Awards
+Q207601" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"American Music Awards
+Q207601" -> "music award
+Q1364556"	[arrowhead=o,
+		color="#111111"];
+	"creole language
+Q33289" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"thoracic disease
+Q18553676"	[color="#111111"];
+	"thoracic disease
+Q18553676" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111"];
+	"thoracic disease
+Q18553676" -> "disease
+Q12136"	[arrowhead=o,
+		color="#111111"];
+	"thoracic disease
+Q18553676" -> "health problem
+Q2057971"	[arrowhead=o,
+		color="#111111"];
+	"coat of arms
+Q14659"	[color="#111111"];
+	"coat of arms
+Q14659" -> "property
+Q937228"	[arrowhead=o,
+		color="#111111",
+		minlen=4];
+	"data structure
+Q175263"	[color="#111111"];
+	"data structure
+Q175263" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+	"order
+Q193622"	[color="#111111"];
+	"order
+Q193622" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111",
+		minlen=4];
+	"grammatical person
+Q690940"	[color="#111111"];
+	"grammatical person
+Q690940" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=4];
+	"historical administrative division
+Q19832712" -> "quality
+Q1207505"	[arrowhead=o,
+		color="#111111",
+		minlen=5];
+}

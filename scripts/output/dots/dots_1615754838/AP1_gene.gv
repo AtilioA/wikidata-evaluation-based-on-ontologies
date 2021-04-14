@@ -1,0 +1,22 @@
+strict digraph {
+	graph [nodesep=0.1,
+		rankdir=BT,
+		ranksep=0.5
+	];
+	"gene
+Q7187"	[fontsize=24];
+	"pseudogene
+Q277338"	[color="#111111"];
+	"pseudogene
+Q277338" -> "gene
+Q7187"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"sequence variant
+Q15304597"	[color="#111111"];
+	"sequence variant
+Q15304597" -> "gene
+Q7187"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+}

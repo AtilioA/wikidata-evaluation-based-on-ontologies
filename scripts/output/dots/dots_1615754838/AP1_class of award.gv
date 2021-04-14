@@ -1,0 +1,22 @@
+strict digraph {
+	graph [nodesep=0.1,
+		rankdir=BT,
+		ranksep=0.5
+	];
+	"class of award
+Q38033430"	[fontsize=24];
+	"grade of an order
+Q60754876"	[color="#111111"];
+	"grade of an order
+Q60754876" -> "class of award
+Q38033430"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"Film award category
+Q56116950"	[color="#111111"];
+	"Film award category
+Q56116950" -> "class of award
+Q38033430"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+}

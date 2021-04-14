@@ -1,0 +1,56 @@
+strict digraph {
+	graph [nodesep=0.1,
+		rankdir=BT,
+		ranksep=0.5
+	];
+	"anatomical structure
+Q4936952"	[fontsize=24];
+	"cellular component
+Q5058355"	[color="#111111"];
+	"cellular component
+Q5058355" -> "anatomical structure
+Q4936952"	[arrowhead=o,
+		color="#111111"];
+	"artery
+Q9655"	[color="#111111"];
+	"artery
+Q9655" -> "anatomical structure
+Q4936952"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"muscle
+Q7365"	[color="#111111"];
+	"muscle
+Q7365" -> "anatomical structure
+Q4936952"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"veins
+Q9609"	[color="#111111"];
+	"veins
+Q9609" -> "anatomical structure
+Q4936952"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+	"bone
+Q265868"	[color="#111111"];
+	"bone
+Q265868" -> "anatomical structure
+Q4936952"	[arrowhead=o,
+		color="#111111",
+		minlen=4];
+	"chromosome
+Q37748"	[color="#111111"];
+	"chromosome
+Q37748" -> "cellular component
+Q5058355"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"tissue
+Q40397"	[color="#111111"];
+	"tissue
+Q40397" -> "anatomical structure
+Q4936952"	[arrowhead=o,
+		color="#111111",
+		minlen=5];
+}

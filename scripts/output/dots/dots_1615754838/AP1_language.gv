@@ -1,0 +1,22 @@
+strict digraph {
+	graph [nodesep=0.1,
+		rankdir=BT,
+		ranksep=0.5
+	];
+	"language
+Q34770"	[fontsize=24];
+	"sign language
+Q34228"	[color="#111111"];
+	"sign language
+Q34228" -> "language
+Q34770"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"creole language
+Q33289"	[color="#111111"];
+	"creole language
+Q33289" -> "language
+Q34770"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+}

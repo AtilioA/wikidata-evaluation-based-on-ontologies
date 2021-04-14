@@ -1,0 +1,466 @@
+strict digraph {
+	graph [nodesep=0.1,
+		rankdir=BT,
+		ranksep=0.5
+	];
+	"product
+Q2424752"	[fontsize=24];
+	"product
+Q2424752" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111"];
+	"wine
+Q282"	[color="#111111"];
+	"alcoholic beverage
+Q154"	[color="#111111"];
+	"wine
+Q282" -> "alcoholic beverage
+Q154"	[arrowhead=o,
+		color="#111111"];
+	"food
+Q2095"	[color="#111111"];
+	"wine
+Q282" -> "food
+Q2095"	[arrowhead=o,
+		color="#111111"];
+	"drink
+Q40050"	[color="#111111"];
+	"wine
+Q282" -> "drink
+Q40050"	[arrowhead=o,
+		color="#111111"];
+	"alcoholic beverage
+Q154" -> "food
+Q2095"	[arrowhead=o,
+		color="#111111"];
+	"alcoholic beverage
+Q154" -> "drink
+Q40050"	[arrowhead=o,
+		color="#111111"];
+	"food
+Q2095" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111"];
+	"drink
+Q40050" -> "food
+Q2095"	[arrowhead=o,
+		color="#111111"];
+	"rose cultivar
+Q26817508"	[color="#111111"];
+	"rose cultivar
+Q26817508" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"medication
+Q12140"	[color="#111111"];
+	"medication
+Q12140" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111"];
+	"medication
+Q12140" -> "medication
+Q12140"	[arrowhead=o,
+		color="#111111"];
+	"traffic sign
+Q170285"	[color="#111111"];
+	"traffic sign
+Q170285" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"currency
+Q8142"	[color="#111111"];
+	"financial product
+Q15809678"	[color="#111111"];
+	"currency
+Q8142" -> "financial product
+Q15809678"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"financial product
+Q15809678" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111"];
+	"crude drug
+Q735160"	[color="#111111"];
+	"crude drug
+Q735160" -> "medication
+Q12140"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"aircraft
+Q11436"	[color="#111111"];
+	"vehicle
+Q42889"	[color="#111111"];
+	"aircraft
+Q11436" -> "vehicle
+Q42889"	[arrowhead=o,
+		color="#111111"];
+	"tool
+Q39546"	[color="#111111"];
+	"aircraft
+Q11436" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"container
+Q987767"	[color="#111111"];
+	"aircraft
+Q11436" -> "container
+Q987767"	[arrowhead=o,
+		color="#111111"];
+	"device
+Q1183543"	[color="#111111"];
+	"aircraft
+Q11436" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+	"vehicle
+Q42889" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"vehicle
+Q42889" -> "container
+Q987767"	[arrowhead=o,
+		color="#111111"];
+	"vehicle
+Q42889" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+	"tool
+Q39546" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111"];
+	"container
+Q987767" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111"];
+	"container
+Q987767" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"device
+Q1183543" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111"];
+	"device
+Q1183543" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"Anatomical Therapeutic Chemical Classification System
+Q192093"	[color="#111111"];
+	"Anatomical Therapeutic Chemical Classification System
+Q192093" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+	"dish
+Q746549"	[color="#111111"];
+	"dish
+Q746549" -> "food
+Q2095"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"food ingredient
+Q25403900"	[color="#111111"];
+	"food ingredient
+Q25403900" -> "food
+Q2095"	[arrowhead=o,
+		color="#111111"];
+	"base material
+Q214609"	[color="#111111"];
+	"food ingredient
+Q25403900" -> "base material
+Q214609"	[arrowhead=o,
+		color="#111111"];
+	"base material
+Q214609" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111"];
+	"fiber
+Q161"	[color="#111111"];
+	"fiber
+Q161" -> "base material
+Q214609"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"file format
+Q235557"	[color="#111111"];
+	"document
+Q49848"	[color="#111111"];
+	"file format
+Q235557" -> "document
+Q49848"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"document
+Q49848" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111"];
+	"musical instrument
+Q34379"	[color="#111111"];
+	"musical instrument
+Q34379" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"musical instrument
+Q34379" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+	"operating system
+Q9135"	[color="#111111"];
+	"software
+Q7397"	[color="#111111"];
+	"operating system
+Q9135" -> "software
+Q7397"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"software
+Q7397" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111"];
+	"amusement ride
+Q1144661"	[color="#111111"];
+	"amusement ride
+Q1144661" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"amusement ride
+Q1144661" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+	"camera lens
+Q192234"	[color="#111111"];
+	"camera lens
+Q192234" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"camera lens
+Q192234" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+	"bone
+Q265868" -> "base material
+Q214609"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"track gauge
+Q214519"	[color="#111111"];
+	"track gauge
+Q214519" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"track gauge
+Q214519" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+	"truck
+Q43193"	[color="#111111"];
+	"truck
+Q43193" -> "vehicle
+Q42889"	[arrowhead=o,
+		color="#111111"];
+	"truck
+Q43193" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"truck
+Q43193" -> "container
+Q987767"	[arrowhead=o,
+		color="#111111"];
+	"truck
+Q43193" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+	"type of wood
+Q1493054"	[color="#111111"];
+	"type of wood
+Q1493054" -> "base material
+Q214609"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+	"game controller
+Q865422"	[color="#111111"];
+	"game controller
+Q865422" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"game controller
+Q865422" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+	"architectural element
+Q391414"	[color="#111111"];
+	"architectural element
+Q391414" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111",
+		minlen=4];
+	"coin
+Q41207"	[color="#111111"];
+	"coin
+Q41207" -> "financial product
+Q15809678"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"system on a chip
+Q610398"	[color="#111111"];
+	"system on a chip
+Q610398" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"system on a chip
+Q610398" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+	"surface-to-air missile
+Q466704"	[color="#111111"];
+	"surface-to-air missile
+Q466704" -> "vehicle
+Q42889"	[arrowhead=o,
+		color="#111111"];
+	"surface-to-air missile
+Q466704" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"surface-to-air missile
+Q466704" -> "container
+Q987767"	[arrowhead=o,
+		color="#111111"];
+	"surface-to-air missile
+Q466704" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+	"weapon
+Q728"	[color="#111111"];
+	"surface-to-air missile
+Q466704" -> "weapon
+Q728"	[arrowhead=o,
+		color="#111111"];
+	"weapon
+Q728" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"air-to-air missile
+Q243249"	[color="#111111"];
+	"air-to-air missile
+Q243249" -> "vehicle
+Q42889"	[arrowhead=o,
+		color="#111111"];
+	"air-to-air missile
+Q243249" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"air-to-air missile
+Q243249" -> "container
+Q987767"	[arrowhead=o,
+		color="#111111"];
+	"air-to-air missile
+Q243249" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+	"air-to-air missile
+Q243249" -> "weapon
+Q728"	[arrowhead=o,
+		color="#111111"];
+	"siege engine
+Q655697"	[color="#111111"];
+	"siege engine
+Q655697" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"siege engine
+Q655697" -> "weapon
+Q728"	[arrowhead=o,
+		color="#111111"];
+	"board game
+Q131436"	[color="#111111"];
+	"board game
+Q131436" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111",
+		minlen=5];
+	"ship
+Q11446"	[color="#111111"];
+	"ship
+Q11446" -> "vehicle
+Q42889"	[arrowhead=o,
+		color="#111111"];
+	"ship
+Q11446" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"ship
+Q11446" -> "container
+Q987767"	[arrowhead=o,
+		color="#111111"];
+	"ship
+Q11446" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+	"anti-ship missile
+Q643532"	[color="#111111"];
+	"anti-ship missile
+Q643532" -> "vehicle
+Q42889"	[arrowhead=o,
+		color="#111111"];
+	"anti-ship missile
+Q643532" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"anti-ship missile
+Q643532" -> "container
+Q987767"	[arrowhead=o,
+		color="#111111"];
+	"anti-ship missile
+Q643532" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+	"anti-ship missile
+Q643532" -> "weapon
+Q728"	[arrowhead=o,
+		color="#111111"];
+	"internal combustion engine
+Q12757"	[color="#111111"];
+	"internal combustion engine
+Q12757" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"internal combustion engine
+Q12757" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+	"clothing
+Q11460"	[color="#111111"];
+	"clothing
+Q11460" -> "product
+Q2424752"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"data structure
+Q175263"	[color="#111111"];
+	"data structure
+Q175263" -> "document
+Q49848"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"steam locomotive
+Q171043"	[color="#111111"];
+	"steam locomotive
+Q171043" -> "vehicle
+Q42889"	[arrowhead=o,
+		color="#111111"];
+	"steam locomotive
+Q171043" -> "tool
+Q39546"	[arrowhead=o,
+		color="#111111"];
+	"steam locomotive
+Q171043" -> "container
+Q987767"	[arrowhead=o,
+		color="#111111"];
+	"steam locomotive
+Q171043" -> "device
+Q1183543"	[arrowhead=o,
+		color="#111111"];
+}

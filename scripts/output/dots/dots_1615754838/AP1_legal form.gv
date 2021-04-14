@@ -1,0 +1,72 @@
+strict digraph {
+	graph [nodesep=0.1,
+		rankdir=BT,
+		ranksep=0.5
+	];
+	"legal form
+Q12047392"	[fontsize=24];
+	"currency
+Q8142" -> "financial product
+Q15809678"	[arrowhead=o,
+		color="#111111"];
+	"business
+Q4830453"	[color="#111111"];
+	"currency
+Q8142" -> "business
+Q4830453"	[arrowhead=o,
+		color="#111111"];
+	"financial product
+Q15809678" -> "business
+Q4830453"	[arrowhead=o,
+		color="#111111"];
+	"business
+Q4830453" -> "legal form
+Q12047392"	[arrowhead=o,
+		color="#111111"];
+	"bachelor's degree
+Q163727" -> "business
+Q4830453"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"master's degree
+Q183816" -> "business
+Q4830453"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"exhibition
+Q464980"	[color="#111111"];
+	"exhibition
+Q464980" -> "business
+Q4830453"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+	"coin
+Q41207" -> "financial product
+Q15809678"	[arrowhead=o,
+		color="#111111"];
+	"coin
+Q41207" -> "business
+Q4830453"	[arrowhead=o,
+		color="#111111"];
+	"treatment
+Q179661"	[color="#111111"];
+	"treatment
+Q179661" -> "business
+Q4830453"	[arrowhead=o,
+		color="#111111",
+		minlen=4];
+	"cabinet
+Q640506"	[color="#111111"];
+	"cabinet
+Q640506" -> "legal form
+Q12047392"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"government agency
+Q327333"	[color="#111111"];
+	"government agency
+Q327333" -> "legal form
+Q12047392"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+}

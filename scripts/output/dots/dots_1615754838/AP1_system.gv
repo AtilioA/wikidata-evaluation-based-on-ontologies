@@ -1,0 +1,158 @@
+strict digraph {
+	graph [nodesep=0.1,
+		rankdir=BT,
+		ranksep=0.5
+	];
+	"system
+Q58778"	[fontsize=24];
+	"economic branch
+Q268592"	[color="#111111"];
+	"academic degree
+Q189533" -> "economic branch
+Q268592"	[arrowhead=o,
+		color="#111111"];
+	"economic branch
+Q268592" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111"];
+	"ethnic group
+Q41710" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111"];
+	"traffic sign
+Q170285" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"currency
+Q8142" -> "financial product
+Q15809678"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"financial product
+Q15809678" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111"];
+	"noble title
+Q355567" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111"];
+	"literary genre
+Q223393" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"veins
+Q9609" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+	"Anatomical Therapeutic Chemical Classification System
+Q192093" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=4];
+	"kinship
+Q171318" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=5];
+	"bachelor's degree
+Q163727" -> "academic degree
+Q189533"	[arrowhead=o,
+		color="#111111"];
+	"bachelor's degree
+Q163727" -> "economic branch
+Q268592"	[arrowhead=o,
+		color="#111111"];
+	"hereditary title
+Q5737899" -> "noble title
+Q355567"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"calendar
+Q12132" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"master's degree
+Q183816" -> "academic degree
+Q189533"	[arrowhead=o,
+		color="#111111"];
+	"master's degree
+Q183816" -> "economic branch
+Q268592"	[arrowhead=o,
+		color="#111111"];
+	"camera lens
+Q192234"	[color="#111111"];
+	"camera lens
+Q192234" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"religion
+Q9174" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+	"human settlement
+Q486972" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=4];
+	"coin
+Q41207" -> "financial product
+Q15809678"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"system on a chip
+Q610398" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=5];
+	"surface-to-air missile
+Q466704"	[color="#111111"];
+	"surface-to-air missile
+Q466704" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"tribe
+Q133311" -> "ethnic group
+Q41710"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"air-to-air missile
+Q243249"	[color="#111111"];
+	"air-to-air missile
+Q243249" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"dance
+Q11639" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+	"form of government
+Q1307214"	[color="#111111"];
+	"form of government
+Q1307214" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=4];
+	"anti-ship missile
+Q643532"	[color="#111111"];
+	"anti-ship missile
+Q643532" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=5];
+	"internal combustion engine
+Q12757"	[color="#111111"];
+	"internal combustion engine
+Q12757" -> "system
+Q58778"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+}

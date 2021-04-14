@@ -1,0 +1,157 @@
+strict digraph {
+	graph [nodesep=0.1,
+		rankdir=BT,
+		ranksep=0.5
+	];
+	"chemical substance
+Q79529"	[fontsize=24];
+	"protein
+Q8054"	[color="#111111"];
+	"chemical compound
+Q11173"	[color="#111111"];
+	"protein
+Q8054" -> "chemical compound
+Q11173"	[arrowhead=o,
+		color="#111111"];
+	"chemical compound
+Q11173" -> "chemical substance
+Q79529"	[arrowhead=o,
+		color="#111111"];
+	"non-coding RNA
+Q427087"	[color="#111111"];
+	"non-coding RNA
+Q427087" -> "chemical compound
+Q11173"	[arrowhead=o,
+		color="#111111"];
+	"RNA
+Q11053"	[color="#111111"];
+	"non-coding RNA
+Q427087" -> "RNA
+Q11053"	[arrowhead=o,
+		color="#111111"];
+	"RNA
+Q11053" -> "chemical substance
+Q79529"	[arrowhead=o,
+		color="#111111"];
+	"RNA
+Q11053" -> "chemical compound
+Q11173"	[arrowhead=o,
+		color="#111111"];
+	"protein domain
+Q898273"	[color="#111111"];
+	"protein domain
+Q898273" -> "chemical compound
+Q11173"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"wine
+Q282"	[color="#111111"];
+	"alcoholic beverage
+Q154"	[color="#111111"];
+	"wine
+Q282" -> "alcoholic beverage
+Q154"	[arrowhead=o,
+		color="#111111"];
+	"drink
+Q40050"	[color="#111111"];
+	"wine
+Q282" -> "drink
+Q40050"	[arrowhead=o,
+		color="#111111"];
+	"alcoholic beverage
+Q154" -> "drink
+Q40050"	[arrowhead=o,
+		color="#111111"];
+	"drink
+Q40050" -> "chemical substance
+Q79529"	[arrowhead=o,
+		color="#111111"];
+	"transfer RNA
+Q201448"	[color="#111111"];
+	"transfer RNA
+Q201448" -> "chemical compound
+Q11173"	[arrowhead=o,
+		color="#111111"];
+	"transfer RNA
+Q201448" -> "non-coding RNA
+Q427087"	[arrowhead=o,
+		color="#111111"];
+	"transfer RNA
+Q201448" -> "RNA
+Q11053"	[arrowhead=o,
+		color="#111111"];
+	"small nucleolar RNA
+Q284416"	[color="#111111"];
+	"small nucleolar RNA
+Q284416" -> "chemical compound
+Q11173"	[arrowhead=o,
+		color="#111111"];
+	"small nucleolar RNA
+Q284416" -> "non-coding RNA
+Q427087"	[arrowhead=o,
+		color="#111111"];
+	"small nucleolar RNA
+Q284416" -> "RNA
+Q11053"	[arrowhead=o,
+		color="#111111"];
+	"transmembrane transport protein family
+Q67101749" -> "protein
+Q8054"	[arrowhead=o,
+		color="#111111"];
+	"transmembrane transport protein family
+Q67101749" -> "chemical compound
+Q11173"	[arrowhead=o,
+		color="#111111"];
+	"medication
+Q12140"	[color="#111111"];
+	"medication
+Q12140" -> "chemical substance
+Q79529"	[arrowhead=o,
+		color="#111111"];
+	"medication
+Q12140" -> "medication
+Q12140"	[arrowhead=o,
+		color="#111111"];
+	"crude drug
+Q735160"	[color="#111111"];
+	"crude drug
+Q735160" -> "medication
+Q12140"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"ribosomal RNA
+Q215980"	[color="#111111"];
+	"ribosomal RNA
+Q215980" -> "chemical compound
+Q11173"	[arrowhead=o,
+		color="#111111"];
+	"ribosomal RNA
+Q215980" -> "non-coding RNA
+Q427087"	[arrowhead=o,
+		color="#111111"];
+	"ribosomal RNA
+Q215980" -> "RNA
+Q11053"	[arrowhead=o,
+		color="#111111"];
+	"small nuclear RNA
+Q284578"	[color="#111111"];
+	"small nuclear RNA
+Q284578" -> "chemical compound
+Q11173"	[arrowhead=o,
+		color="#111111"];
+	"small nuclear RNA
+Q284578" -> "non-coding RNA
+Q427087"	[arrowhead=o,
+		color="#111111"];
+	"small nuclear RNA
+Q284578" -> "RNA
+Q11053"	[arrowhead=o,
+		color="#111111"];
+	"heterocyclic compound
+Q193430"	[color="#111111"];
+	"heterocyclic compound
+Q193430" -> "chemical compound
+Q11173"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+}

@@ -1,0 +1,23 @@
+strict digraph {
+	graph [nodesep=0.1,
+		rankdir=BT,
+		ranksep=0.5
+	];
+	"genre
+Q483394"	[fontsize=24];
+	"literary genre
+Q223393" -> "genre
+Q483394"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"architectural style
+Q32880" -> "genre
+Q483394"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"dance
+Q11639" -> "genre
+Q483394"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+}

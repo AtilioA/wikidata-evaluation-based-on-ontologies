@@ -1,0 +1,22 @@
+strict digraph {
+	graph [nodesep=0.1,
+		rankdir=BT,
+		ranksep=0.5
+	];
+	"architectural structure
+Q811979"	[fontsize=24];
+	"building
+Q41176"	[color="#111111"];
+	"building
+Q41176" -> "architectural structure
+Q811979"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"amusement ride
+Q1144661"	[color="#111111"];
+	"amusement ride
+Q1144661" -> "architectural structure
+Q811979"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+}

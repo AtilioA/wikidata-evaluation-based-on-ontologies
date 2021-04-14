@@ -1,0 +1,14 @@
+strict digraph {
+	graph [nodesep=0.1,
+		rankdir=BT,
+		ranksep=0.5
+	];
+	"type of sport
+Q31629"	[fontsize=24];
+	"sports discipline
+Q2312410"	[color="#111111"];
+	"sports discipline
+Q2312410" -> "type of sport
+Q31629"	[arrowhead=o,
+		color="#111111"];
+}

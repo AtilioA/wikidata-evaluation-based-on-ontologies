@@ -1,0 +1,12 @@
+strict digraph {
+	graph [nodesep=0.1,
+		rankdir=BT,
+		ranksep=0.5
+	];
+	"publication
+Q732577"	[fontsize=24];
+	"American Music Awards
+Q207601" -> "publication
+Q732577"	[arrowhead=o,
+		color="#111111"];
+}

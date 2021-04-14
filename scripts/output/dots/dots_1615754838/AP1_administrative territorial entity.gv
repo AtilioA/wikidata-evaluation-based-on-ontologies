@@ -1,0 +1,22 @@
+strict digraph {
+	graph [nodesep=0.1,
+		rankdir=BT,
+		ranksep=0.5
+	];
+	"administrative territorial entity
+Q56061"	[fontsize=24];
+	"historical administrative division
+Q19832712"	[color="#111111"];
+	"historical administrative division
+Q19832712" -> "administrative territorial entity
+Q56061"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"third-level administrative country subdivision
+Q13221722"	[color="#111111"];
+	"third-level administrative country subdivision
+Q13221722" -> "administrative territorial entity
+Q56061"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+}

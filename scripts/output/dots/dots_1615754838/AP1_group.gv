@@ -1,0 +1,1094 @@
+strict digraph {
+	graph [nodesep=0.15,
+		rankdir=BT,
+		ranksep=1
+	];
+	"group
+Q16887380"	[fontsize=24];
+	"group
+Q16887380" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111"];
+	"biological process
+Q2996394"	[color="#111111"];
+	"biological process
+Q2996394" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111"];
+	"biological process
+Q2996394" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"process
+Q3249551"	[color="#111111"];
+	"biological process
+Q2996394" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"process
+Q3249551" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111"];
+	"process
+Q3249551" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"molecular function
+Q14860489"	[color="#111111"];
+	"molecular function
+Q14860489" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"molecular function
+Q14860489" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"award
+Q618779" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"award
+Q618779" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"grade of an order
+Q60754876" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"grade of an order
+Q60754876" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"grade of an order
+Q60754876" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"grade of an order
+Q60754876" -> "title of honor
+Q3320743"	[arrowhead=o,
+		color="#111111"];
+	"activity
+Q1914636"	[color="#111111"];
+	"grade of an order
+Q60754876" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"title of honor
+Q3320743" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"title of honor
+Q3320743" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"title of honor
+Q3320743" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"title of honor
+Q3320743" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"activity
+Q1914636" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111"];
+	"academic discipline
+Q11862829"	[color="#111111"];
+	"academic discipline
+Q11862829" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"academic discipline
+Q11862829" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"academic discipline
+Q11862829" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"specialty
+Q1047113"	[color="#111111"];
+	"academic discipline
+Q11862829" -> "specialty
+Q1047113"	[arrowhead=o,
+		color="#111111"];
+	"specialty
+Q1047113" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"specialty
+Q1047113" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"specialty
+Q1047113" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"occupation
+Q12737077"	[color="#111111"];
+	"occupation
+Q12737077" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"academic degree
+Q189533" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"academic degree
+Q189533" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"academic degree
+Q189533" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"academic degree
+Q189533" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"ethnic group
+Q41710"	[color="#111111"];
+	"group of humans
+Q16334295"	[color="#111111"];
+	"ethnic group
+Q41710" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"group of humans
+Q16334295" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111"];
+	"profession
+Q28640"	[color="#111111"];
+	"profession
+Q28640" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"profession
+Q28640" -> "occupation
+Q12737077"	[arrowhead=o,
+		color="#111111"];
+	"heritage designation
+Q30634609" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"heritage designation
+Q30634609" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"rose cultivar
+Q26817508"	[color="#111111"];
+	"rose cultivar
+Q26817508" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"organization
+Q43229"	[color="#111111"];
+	"organization
+Q43229" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111"];
+	"organization
+Q43229" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"collection
+Q2668072"	[color="#111111"];
+	"collection
+Q2668072" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"traffic sign
+Q170285" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"traffic sign
+Q170285" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"method
+Q1799072"	[color="#111111"];
+	"traffic sign
+Q170285" -> "method
+Q1799072"	[arrowhead=o,
+		color="#111111"];
+	"technique
+Q2695280"	[color="#111111"];
+	"traffic sign
+Q170285" -> "technique
+Q2695280"	[arrowhead=o,
+		color="#111111"];
+	"method
+Q1799072" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"method
+Q1799072" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"method
+Q1799072" -> "technique
+Q2695280"	[arrowhead=o,
+		color="#111111"];
+	"technique
+Q2695280" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"technique
+Q2695280" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"cultural heritage
+Q210272" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"cultural heritage
+Q210272" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"cultural heritage
+Q210272" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"cultural heritage
+Q210272" -> "academic discipline
+Q11862829"	[arrowhead=o,
+		color="#111111"];
+	"cultural heritage
+Q210272" -> "specialty
+Q1047113"	[arrowhead=o,
+		color="#111111"];
+	"cultural heritage
+Q210272" -> "heritage designation
+Q30634609"	[arrowhead=o,
+		color="#111111"];
+	"currency
+Q8142" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"currency
+Q8142" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"currency
+Q8142" -> "financial product
+Q15809678"	[arrowhead=o,
+		color="#111111"];
+	"currency
+Q8142" -> "business
+Q4830453"	[arrowhead=o,
+		color="#111111"];
+	"financial product
+Q15809678" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"financial product
+Q15809678" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"financial product
+Q15809678" -> "business
+Q4830453"	[arrowhead=o,
+		color="#111111"];
+	"business
+Q4830453" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111"];
+	"business
+Q4830453" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"business
+Q4830453" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"political ideology
+Q12909644" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"noble title
+Q355567" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"noble title
+Q355567" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"noble title
+Q355567" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"noble title
+Q355567" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"noble title
+Q355567" -> "academic discipline
+Q11862829"	[arrowhead=o,
+		color="#111111"];
+	"noble title
+Q355567" -> "specialty
+Q1047113"	[arrowhead=o,
+		color="#111111"];
+	"noble title
+Q355567" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"science
+Q336"	[color="#111111"];
+	"noble title
+Q355567" -> "science
+Q336"	[arrowhead=o,
+		color="#111111"];
+	"science
+Q336" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"science
+Q336" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"science
+Q336" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"science
+Q336" -> "academic discipline
+Q11862829"	[arrowhead=o,
+		color="#111111"];
+	"science
+Q336" -> "specialty
+Q1047113"	[arrowhead=o,
+		color="#111111"];
+	"literary genre
+Q223393" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"literary genre
+Q223393" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"literary genre
+Q223393" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"national association football team
+Q6979593"	[color="#111111"];
+	"national association football team
+Q6979593" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"national association football team
+Q6979593" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"national association football team
+Q6979593" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"national association football team
+Q6979593" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"kinship
+Q171318"	[color="#111111"];
+	"kinship
+Q171318" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"bachelor's degree
+Q163727" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"bachelor's degree
+Q163727" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"bachelor's degree
+Q163727" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"bachelor's degree
+Q163727" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"bachelor's degree
+Q163727" -> "academic degree
+Q189533"	[arrowhead=o,
+		color="#111111"];
+	"bachelor's degree
+Q163727" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"bachelor's degree
+Q163727" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"bachelor's degree
+Q163727" -> "business
+Q4830453"	[arrowhead=o,
+		color="#111111"];
+	"election
+Q40231" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"election
+Q40231" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"election
+Q40231" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"hereditary title
+Q5737899" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"hereditary title
+Q5737899" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"hereditary title
+Q5737899" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"hereditary title
+Q5737899" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"hereditary title
+Q5737899" -> "academic discipline
+Q11862829"	[arrowhead=o,
+		color="#111111"];
+	"hereditary title
+Q5737899" -> "specialty
+Q1047113"	[arrowhead=o,
+		color="#111111"];
+	"hereditary title
+Q5737899" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"hereditary title
+Q5737899" -> "noble title
+Q355567"	[arrowhead=o,
+		color="#111111"];
+	"hereditary title
+Q5737899" -> "science
+Q336"	[arrowhead=o,
+		color="#111111"];
+	"file format
+Q235557" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"document
+Q49848"	[color="#111111"];
+	"file format
+Q235557" -> "document
+Q49848"	[arrowhead=o,
+		color="#111111"];
+	"document
+Q49848" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111"];
+	"symptom
+Q169872" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"symptom
+Q169872" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"medical finding
+Q639907"	[color="#111111"];
+	"symptom
+Q169872" -> "medical finding
+Q639907"	[arrowhead=o,
+		color="#111111"];
+	"medical finding
+Q639907" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"medical finding
+Q639907" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"medical finding
+Q639907" -> "medical finding
+Q639907"	[arrowhead=o,
+		color="#111111"];
+	"military unit
+Q176799"	[color="#111111"];
+	"military unit
+Q176799" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"military unit
+Q176799" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"chess opening
+Q103632"	[color="#111111"];
+	"chess opening
+Q103632" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+	"calendar
+Q12132"	[color="#111111"];
+	"calendar
+Q12132" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"calendar
+Q12132" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"calendar
+Q12132" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"calendar
+Q12132" -> "academic discipline
+Q11862829"	[arrowhead=o,
+		color="#111111"];
+	"calendar
+Q12132" -> "specialty
+Q1047113"	[arrowhead=o,
+		color="#111111"];
+	"calendar
+Q12132" -> "science
+Q336"	[arrowhead=o,
+		color="#111111"];
+	"master's degree
+Q183816" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"master's degree
+Q183816" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"master's degree
+Q183816" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"master's degree
+Q183816" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"master's degree
+Q183816" -> "academic degree
+Q189533"	[arrowhead=o,
+		color="#111111"];
+	"master's degree
+Q183816" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"master's degree
+Q183816" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"master's degree
+Q183816" -> "business
+Q4830453"	[arrowhead=o,
+		color="#111111"];
+	"sport
+Q349"	[color="#111111"];
+	"sport
+Q349" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"sport
+Q349" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"clinical sign
+Q1441305" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"clinical sign
+Q1441305" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"clinical sign
+Q1441305" -> "medical finding
+Q639907"	[arrowhead=o,
+		color="#111111"];
+	"elective office
+Q17279032" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"elective office
+Q17279032" -> "occupation
+Q12737077"	[arrowhead=o,
+		color="#111111"];
+	"elective office
+Q17279032" -> "profession
+Q28640"	[arrowhead=o,
+		color="#111111"];
+	"phobia
+Q175854" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"phobia
+Q175854" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"phobia
+Q175854" -> "symptom
+Q169872"	[arrowhead=o,
+		color="#111111"];
+	"phobia
+Q175854" -> "medical finding
+Q639907"	[arrowhead=o,
+		color="#111111"];
+	"military rank
+Q56019" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"military rank
+Q56019" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"military rank
+Q56019" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"film award
+Q4220917" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"film award
+Q4220917" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"film award
+Q4220917" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"medical test
+Q2671652"	[color="#111111"];
+	"medical test
+Q2671652" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"medical test
+Q2671652" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"medical test
+Q2671652" -> "method
+Q1799072"	[arrowhead=o,
+		color="#111111"];
+	"medical test
+Q2671652" -> "technique
+Q2695280"	[arrowhead=o,
+		color="#111111"];
+	"track gauge
+Q214519" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"track gauge
+Q214519" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"track gauge
+Q214519" -> "technique
+Q2695280"	[arrowhead=o,
+		color="#111111"];
+	"educational institution
+Q2385804"	[color="#111111"];
+	"educational institution
+Q2385804" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"educational institution
+Q2385804" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"literary award
+Q378427" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"literary award
+Q378427" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"literary award
+Q378427" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"theatre award
+Q15229229" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"theatre award
+Q15229229" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"theatre award
+Q15229229" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"conjugation class
+Q53996674" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111",
+		minlen=4];
+	"religion
+Q9174" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"religion
+Q9174" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"religion
+Q9174" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"religion
+Q9174" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"religion
+Q9174" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"human settlement
+Q486972"	[color="#111111"];
+	"human settlement
+Q486972" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"architectural style
+Q32880"	[color="#111111"];
+	"architectural style
+Q32880" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"literary work
+Q7725634"	[color="#111111"];
+	"literary work
+Q7725634" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111",
+		minlen=5];
+	"government
+Q7188"	[color="#111111"];
+	"government
+Q7188" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"government
+Q7188" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"Juno Award
+Q507057" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"Juno Award
+Q507057" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"Juno Award
+Q507057" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"Juno Award
+Q507057" -> "music award
+Q1364556"	[arrowhead=o,
+		color="#111111"];
+	"music award
+Q1364556" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"music award
+Q1364556" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"music award
+Q1364556" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"exhibition
+Q464980" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"exhibition
+Q464980" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"exhibition
+Q464980" -> "business
+Q4830453"	[arrowhead=o,
+		color="#111111"];
+	"coin
+Q41207" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"coin
+Q41207" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"coin
+Q41207" -> "financial product
+Q15809678"	[arrowhead=o,
+		color="#111111"];
+	"coin
+Q41207" -> "business
+Q4830453"	[arrowhead=o,
+		color="#111111"];
+	"treatment
+Q179661" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"treatment
+Q179661" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"treatment
+Q179661" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"treatment
+Q179661" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"treatment
+Q179661" -> "method
+Q1799072"	[arrowhead=o,
+		color="#111111"];
+	"treatment
+Q179661" -> "technique
+Q2695280"	[arrowhead=o,
+		color="#111111"];
+	"treatment
+Q179661" -> "business
+Q4830453"	[arrowhead=o,
+		color="#111111"];
+	"system on a chip
+Q610398"	[color="#111111"];
+	"system on a chip
+Q610398" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111",
+		minlen=3];
+	"industry
+Q8148"	[color="#111111"];
+	"industry
+Q8148" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"tribe
+Q133311"	[color="#111111"];
+	"tribe
+Q133311" -> "ethnic group
+Q41710"	[arrowhead=o,
+		color="#111111"];
+	"tribe
+Q133311" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"tribe
+Q133311" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"military decoration
+Q1788716" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"military decoration
+Q1788716" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"military decoration
+Q1788716" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"Film award category
+Q56116950" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"Film award category
+Q56116950" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"Film award category
+Q56116950" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"Film award category
+Q56116950" -> "film award
+Q4220917"	[arrowhead=o,
+		color="#111111"];
+	"cabinet
+Q640506" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"cabinet
+Q640506" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"cabinet
+Q640506" -> "government
+Q7188"	[arrowhead=o,
+		color="#111111"];
+	"dance
+Q11639"	[color="#111111"];
+	"dance
+Q11639" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"dance
+Q11639" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"dance
+Q11639" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"game
+Q11410"	[color="#111111"];
+	"game
+Q11410" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"game
+Q11410" -> "industry
+Q8148"	[arrowhead=o,
+		color="#111111"];
+	"sign language
+Q34228" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"sign language
+Q34228" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"sign language
+Q34228" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"integer sequence
+Q2297602"	[color="#111111"];
+	"integer sequence
+Q2297602" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111",
+		minlen=1];
+	"American Music Awards
+Q207601" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"American Music Awards
+Q207601" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"American Music Awards
+Q207601" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"American Music Awards
+Q207601" -> "music award
+Q1364556"	[arrowhead=o,
+		color="#111111"];
+	"school
+Q3914"	[color="#111111"];
+	"school
+Q3914" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"school
+Q3914" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"school
+Q3914" -> "educational institution
+Q2385804"	[arrowhead=o,
+		color="#111111"];
+	"board game
+Q131436"	[color="#111111"];
+	"board game
+Q131436" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"board game
+Q131436" -> "industry
+Q8148"	[arrowhead=o,
+		color="#111111"];
+	"board game
+Q131436" -> "game
+Q11410"	[arrowhead=o,
+		color="#111111"];
+	"social movement
+Q49773"	[color="#111111"];
+	"social movement
+Q49773" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"social movement
+Q49773" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"coat of arms
+Q14659" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"coat of arms
+Q14659" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"coat of arms
+Q14659" -> "activity
+Q1914636"	[arrowhead=o,
+		color="#111111"];
+	"tissue
+Q40397" -> "group
+Q16887380"	[arrowhead=o,
+		color="#111111",
+		minlen=2];
+	"data structure
+Q175263" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"data structure
+Q175263" -> "document
+Q49848"	[arrowhead=o,
+		color="#111111"];
+	"order
+Q193622" -> "biological process
+Q2996394"	[arrowhead=o,
+		color="#111111"];
+	"order
+Q193622" -> "process
+Q3249551"	[arrowhead=o,
+		color="#111111"];
+	"order
+Q193622" -> "award
+Q618779"	[arrowhead=o,
+		color="#111111"];
+	"order
+Q193622" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"order
+Q193622" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+	"government agency
+Q327333" -> "group of humans
+Q16334295"	[arrowhead=o,
+		color="#111111"];
+	"government agency
+Q327333" -> "organization
+Q43229"	[arrowhead=o,
+		color="#111111"];
+}

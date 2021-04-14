@@ -1,0 +1,14 @@
+strict digraph {
+	graph [nodesep=0.1,
+		rankdir=BT,
+		ranksep=0.5
+	];
+	"enzyme family
+Q67015883"	[fontsize=24];
+	"transmembrane transport protein family
+Q67101749"	[color="#111111"];
+	"transmembrane transport protein family
+Q67101749" -> "enzyme family
+Q67015883"	[arrowhead=o,
+		color="#111111"];
+}
