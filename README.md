@@ -16,5 +16,7 @@ Some SPARQL queries and Python scripts I've written during my undergraduate rese
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`queries/output/dots`: graphs produced with graphviz
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`queries/output/ranking`: rankings for AP1 and AP2
+
 &nbsp;&nbsp;&nbsp;&nbsp;`queries/other`: old/unused files
 

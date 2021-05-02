@@ -82,7 +82,7 @@ if __name__ == "__main__":
 
     # Open output file
     with open(
-        "output/AP1_minusQ23958852_items_ranking.txt", "a+", encoding="utf-8"
+        "output/ranking/AP1_minus_Q23958852_ranking.txt", "a+", encoding="utf-8"
     ) as fRanking:
         for i, (entity, frequency) in enumerate(topEntities[lo:]):
             try:

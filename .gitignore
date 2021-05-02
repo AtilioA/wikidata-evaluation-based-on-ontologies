@@ -151,8 +151,13 @@ dmypy.json
 *.gv
 *.pdf
 *.json
+
+queries/*.sparql
+
 !AP1_trees.json
 !AP1_trees_superclasses.json
-queries/*.sparql
+
 !**/dots_1615754838/**
+
 !requirements.txt
+!*ranking*.txt

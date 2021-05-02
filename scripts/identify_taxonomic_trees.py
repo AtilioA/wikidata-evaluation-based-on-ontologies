@@ -319,7 +319,7 @@ if __name__ == "__main__":
     try:
         fileIn = Path(sys.argv[2])
     except:
-        fileIn = Path("output/AP1_minusQ23958852_items_ranking.txt")
+        fileIn = Path("output/ranking/AP1_minus_Q23958852_ranking.txt")
 
     with open(fileIn, "r") as rankingFile:
         entities = parse_ranking_file(rankingFile)
