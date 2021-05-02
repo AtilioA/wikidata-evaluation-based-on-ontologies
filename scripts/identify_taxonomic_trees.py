@@ -329,5 +329,5 @@ if __name__ == "__main__":
         #     "output/AP1_occurrence.json", rankingEntities=entities
         # )
         graph_from_superclasses_dict(
-            "output/AP1_trees_incomplete.json", rankingEntities=entities
+            "output/AP1_trees.json", rankingEntities=entities
         )
