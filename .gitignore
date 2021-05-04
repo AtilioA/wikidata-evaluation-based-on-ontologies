@@ -151,6 +151,7 @@ dmypy.json
 *.gv
 *.pdf
 *.json
+*ignoreme*
 
 queries/*.sparql
 
