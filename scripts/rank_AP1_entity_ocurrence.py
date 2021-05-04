@@ -9,20 +9,22 @@ import wikidata_utils
 
 
 if __name__ == "__main__":
-    with open("AP1P_objects.txt", "r") as csvfile:
+    # AP1T = AP1 with transitivity
+    with open("../queries/results/AP1T.csv", "r") as csvfile:
         reader = csv.reader(csvfile, delimiter=",")
-        Aentities = [row[0] for row in reader]
+        Aentities = [row[1] for row in reader]
 
     # Read start and stop arguments from argv
     lo, hi = wikidata_utils.parse_lo_hi()
 
+    # Filter out instances of Q23958852 (subjects)
     Aentities = wikidata_utils.remove_instances_Q23958852(
         Aentities, "other/instancesof_Q23958852.txt"
     )
 
     # Count most frequent entities with Counter
     topEntities = Counter(Aentities).most_common(hi)
-    print(topEntities)
+    print("Top entities and their # of occurrences: ", topEntities)
 
     # Open output file
     with open(
@@ -36,4 +38,4 @@ if __name__ == "__main__":
                 print(f"{i + 1} - Wrote {entity} ({label}).")
             except Exception as exception:
                 pprint(f"Failed for {entity}, ({exception})")
-                fRanking.write(f"{entity} (label unavailable): {frequency}\n")
+                fRanking.write(f"{i + 1} - {entity} (label unavailable): {frequency}\n")

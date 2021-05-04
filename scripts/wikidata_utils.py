@@ -179,14 +179,14 @@ def add_prefix_wd(str):
 def random_color_hex():
     colors = []
     rgb = ""
-    
+
     while sum(colors) > 660 or rgb == "":
         colors = []
         rgb = ""
         for _ in "RGB":
             colors.append(random.randrange(0, 2 ** 8))
             rgb += colors[-1].to_bytes(1, "big").hex()
-            
+
     return f"#{rgb}"
 
 
