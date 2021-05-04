@@ -1,9 +1,9 @@
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 
-SELECT ?C ?B ?A
+SELECT ?A ?B ?C
 WHERE
 {
   ?C wdt:P279 ?A .
   ?C wdt:P279 ?B .
   ?B wdt:P31 ?A .
-} LIMIT 2
+}

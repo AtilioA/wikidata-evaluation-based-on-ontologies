@@ -1,0 +1,11 @@
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+# Alternative for AP2 ranking (without transitivity)
+select ?metaclass1 ?metaclass1Label (count(?metaclass1) as ?count) WHERE {
+    ?class wdt:P279 ?metaclass1 .
+    ?class wdt:P279 ?metaclass2 .
+    ?metaclass2 wdt:P31 ?metaclass1 .
+    ?metaclass1 rdfs:label ?metaclass1Label .
+    FILTER (lang(?metaclass1Label) = "" || lang(?metaclass1Label) = "en") .
+} group by ?metaclass1 ?metaclass1Label order by DESC(?count)

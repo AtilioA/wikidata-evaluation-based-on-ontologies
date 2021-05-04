@@ -154,6 +154,8 @@ dmypy.json
 *ignoreme*
 
 queries/*.sparql
+# !queries/AP1T_ranking.sparql
+# !queries/AP2_ranking.sparql
 
 !AP1_trees.json
 !AP1_trees_superclasses.json

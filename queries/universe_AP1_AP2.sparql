@@ -4,7 +4,7 @@ SELECT ?A ?B ?C
 WHERE
 {
   ?A wdt:P279 ?B . # All entities that are classes
-  ?A wdt:P31 ?C . # Classes that are instances of other entities
+  ?A wdt:P31 ?C . # Classes that are also instances of other entities
 }
 
 # Thus all entities involved in hierarchies spanning more than one level of classification
