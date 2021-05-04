@@ -24,6 +24,26 @@ def regex_match_QID(entitiesList):
     return parsedQIDList
 
 
+def is_instanceof_Q23958852(entity, instancesof_Q23958852_FILE):
+    # Check if entity is instance of Q23958852 based on a list of instances of Q23958852
+
+    # Open file with instances of Q23958852 and adjust strings for comparison
+    with open(instancesof_Q23958852_FILE, "r", encoding="utf-8") as fAP1P:
+        instancesOfQ23958852 = fAP1P.readlines()
+        instancesOfQ23958852 = list(
+            map(lambda line: line.strip(), instancesOfQ23958852)
+        )
+
+    # Remove Wikidata URL
+    entity = remove_prefix(entity, WIKIDATA_ENTITY_PREFIX)
+    # Remove wd: entity prefix
+    entity = remove_prefix(entity, 'wd:')
+
+    # print(entity, entity in instancesOfQ23958852)
+
+    return (entity in instancesOfQ23958852)
+
+
 def remove_instances_Q23958852(entitiesList, instancesof_Q23958852_FILE):
     # Remove Q23958852 instances from a list of entities
 
@@ -40,11 +60,11 @@ def remove_instances_Q23958852(entitiesList, instancesof_Q23958852_FILE):
     entitiesList = list(map(lambda x: remove_prefix(x, "wd:"), entitiesList))
 
     # Remove instances of Q23958852 from entities list
-    print("Before removing Q23958852:", len(entitiesList))
+    print("# of entities before removing instances of Q23958852:", len(entitiesList))
     entitiesList = [
         entity for entity in entitiesList if entity not in instancesOfQ23958852
     ]
-    print("After removing Q23958852: ", len(entitiesList))
+    print("# of entities after removing instances of Q23958852: ", len(entitiesList))
 
     return entitiesList
 
@@ -168,3 +188,59 @@ def random_color_hex():
             rgb += colors[-1].to_bytes(1, "big").hex()
             
     return f"#{rgb}"
+
+
+def find_occurrences_entity(entity, resultsJson):
+    occurrences = {
+        "superclasses": [],
+        "subclasses": [],
+    }
+
+    for result in resultsJson:
+        if entity in result["subject"]:
+            occurrences["superclasses"].append(
+                {"object": result["object"], "objectLabel": ""}
+            )
+        elif entity in result["object"]:
+            occurrences["subclasses"].append(
+                {"subject": result["subject"], "subjectLabel": result["subjectLabel"]}
+            )
+
+    return occurrences
+
+
+def improve_AP1_json_file(resultsPath="../queries/results/AP1P.json"):
+    with open(Path(resultsPath), "r", encoding="utf8") as fAP1:
+        resultsJson = json.load(fAP1)["results"]["bindings"][:5000000]
+        regex_pattern = re.compile(".*?(Q\d+)")
+
+        for i, result in enumerate(resultsJson):
+            resultsJson[i]["object"] = re.search(
+                regex_pattern, resultsJson[i]["object"]["value"]
+            ).group(1)
+            resultsJson[i]["subject"] = re.search(
+                regex_pattern, resultsJson[i]["subject"]["value"]
+            ).group(1)
+            try:
+                resultsJson[i]["subjectLabel"] = resultsJson[i]["subjectLabel"]["value"]
+            except:
+                resultsJson[i]["subjectLabel"] = "Label unavailable"
+        with open("../queries/results/AP1P_light.json", "w+", encoding="utf8") as fAP1L:
+            json.dump(resultsJson, fAP1L)
+    return resultsJson
+
+
+def read_AP1_results(entitiesSet, resultsPath="../queries/results/AP1P_light.json"):
+    try:
+        with open(Path(resultsPath), "r", encoding="utf8") as fAP1:
+            resultsJson = json.load(fAP1)
+    except FileNotFoundError:
+        resultsJson = improve_AP1_json_file(resultsPath="../queries/results/AP1P.json")
+
+    print(len(entitiesSet))
+    entitiesOccurrences = {}
+    for i, entity in enumerate(list(entitiesSet)):
+        entitiesOccurrences[entity] = find_occurrences_entity(entity, resultsJson)
+        print(i)
+    with open("output/AP1_ranking_entities.json", "w+", encoding="utf8") as fOccurrence:
+        json.dump(entitiesOccurrences, fOccurrence)
